@@ -1,0 +1,56 @@
+{
+  "kind": "apk",
+  "meta": {
+    "package": "org.scamshield.demo.calculator",
+    "label": "Simple Calculator",
+    "version": "2.0",
+    "min_sdk": "23",
+    "target_sdk": "33",
+    "file_name": "simple_calculator.apk"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "type": "app",
+      "key": "info.label",
+      "value": "Simple Calculator",
+      "label": "App name shown to the user",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E2",
+      "type": "app",
+      "key": "info.package",
+      "value": "org.scamshield.demo.calculator",
+      "label": "Package name",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E3",
+      "type": "permission",
+      "key": "info.other_permissions",
+      "value": "VIBRATE",
+      "label": "Other permissions (normal risk)",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E4",
+      "type": "certificate",
+      "key": "info.certificate",
+      "value": "Common Name: ScamShield Demo Labs, Organization: ScamShield, Country: IN",
+      "label": "Signing certificate (self-signed)",
+      "severity": "info",
+      "params": {}
+    }
+  ],
+  "certificate": {
+    "signed": true,
+    "subject": "Common Name: ScamShield Demo Labs, Organization: ScamShield, Country: IN",
+    "issuer": "Common Name: ScamShield Demo Labs, Organization: ScamShield, Country: IN",
+    "self_signed": true,
+    "debug": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "_comment": "MOCK DATA for the demo only. These are invented shops. Real UPI name lookups need a licensed verification provider (NPCI-member access). See scripts/verify_upi.py.",
+  "is_mock": true,
+  "merchants": {
+    "sharmastores@okaxis": "Sharma General Store",
+    "ganeshstores@okicici": "Sri Ganesh Stores",
+    "annapoornacafe@oksbi": "Annapoorna Cafe",
+    "9876501234@ybl": "Ravi Kumar",
+    "9900112233@paytm": "Suresh N"
+  }
+}

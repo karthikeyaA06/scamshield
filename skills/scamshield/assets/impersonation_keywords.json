@@ -1,0 +1,32 @@
+{
+  "_comment": "Words scam apps put in their name to look official. 'official_packages' is a small EXAMPLE allowlist for the demo; verify package names before relying on it in production.",
+  "keywords": {
+    "rto": "transport department",
+    "challan": "traffic police",
+    "parivahan": "transport department",
+    "e-challan": "traffic police",
+    "kyc": "bank",
+    "pm kisan": "government scheme",
+    "pmkisan": "government scheme",
+    "pm-kisan": "government scheme",
+    "aadhaar": "UIDAI",
+    "income tax": "income tax department",
+    "electricity bill": "electricity board",
+    "bescom": "electricity board",
+    "sbi": "bank",
+    "yono": "bank",
+    "hdfc": "bank",
+    "icici": "bank",
+    "axis bank": "bank",
+    "canara": "bank",
+    "customs": "customs department",
+    "courier": "courier company",
+    "cbi": "police",
+    "cyber police": "police"
+  },
+  "official_packages": [
+    "com.sbi.lotusintouch",
+    "com.nic.mparivahan",
+    "in.gov.uidai.mAadhaarPlus"
+  ]
+}

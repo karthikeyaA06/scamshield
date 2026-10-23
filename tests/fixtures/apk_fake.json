@@ -1,0 +1,114 @@
+{
+  "kind": "apk",
+  "meta": {
+    "package": "com.rtochallan.payonline",
+    "label": "RTO Challan",
+    "version": "1.3",
+    "min_sdk": "23",
+    "target_sdk": "33",
+    "file_name": "fake_rto_challan.apk"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "type": "app",
+      "key": "info.label",
+      "value": "RTO Challan",
+      "label": "App name shown to the user",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E2",
+      "type": "app",
+      "key": "info.package",
+      "value": "com.rtochallan.payonline",
+      "label": "Package name",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E3",
+      "type": "permission",
+      "key": "perm.READ_SMS",
+      "value": "android.permission.READ_SMS",
+      "label": "Read all SMS messages, including bank OTPs",
+      "severity": "medium",
+      "params": {}
+    },
+    {
+      "id": "E4",
+      "type": "permission",
+      "key": "perm.RECEIVE_SMS",
+      "value": "android.permission.RECEIVE_SMS",
+      "label": "Receive SMS messages the moment they arrive",
+      "severity": "medium",
+      "params": {}
+    },
+    {
+      "id": "E5",
+      "type": "permission",
+      "key": "perm.BIND_ACCESSIBILITY_SERVICE",
+      "value": "android.permission.BIND_ACCESSIBILITY_SERVICE",
+      "label": "See the screen and tap buttons on the user's behalf",
+      "severity": "high",
+      "params": {}
+    },
+    {
+      "id": "E6",
+      "type": "permission",
+      "key": "info.other_permissions",
+      "value": "INTERNET",
+      "label": "Other permissions (normal risk)",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E7",
+      "type": "string",
+      "key": "string.telegram_bot",
+      "value": "https://api.telegram.org/botDEMO_NOT_REAL/sendMessage",
+      "label": "Telegram bot link inside the code",
+      "severity": "high",
+      "params": {}
+    },
+    {
+      "id": "E8",
+      "type": "string",
+      "key": "string.sensitive_keywords",
+      "value": "otp, upi, kyc, challan, pin",
+      "label": "Sensitive words in the code",
+      "severity": "low",
+      "params": {
+        "words": "otp, upi, kyc, challan, pin"
+      }
+    },
+    {
+      "id": "E9",
+      "type": "app",
+      "key": "impersonation",
+      "value": "\"RTO Challan\" (com.rtochallan.payonline) matches \"rto\"",
+      "label": "Name looks like an official transport department app",
+      "severity": "high",
+      "params": {
+        "entity": "transport department"
+      }
+    },
+    {
+      "id": "E10",
+      "type": "certificate",
+      "key": "cert.debug",
+      "value": "Common Name: Android Debug, Organization: Android, Country: US",
+      "label": "Signed with a test (debug) certificate",
+      "severity": "medium",
+      "params": {}
+    }
+  ],
+  "certificate": {
+    "signed": true,
+    "subject": "Common Name: Android Debug, Organization: Android, Country: US",
+    "issuer": "Common Name: Android Debug, Organization: Android, Country: US",
+    "self_signed": true,
+    "debug": true
+  }
+}

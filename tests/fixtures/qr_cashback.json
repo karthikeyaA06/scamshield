@@ -1,0 +1,92 @@
+{
+  "kind": "qr",
+  "meta": {
+    "raw": "upi://pay?pa=9876501234@ybl&pn=Receive%20Cashback&am=5000&tn=Scan%20to%20receive%20Rs%205000%20cashback&cu=INR",
+    "shop_name": null,
+    "type": "upi",
+    "payee_upi": "9876501234@ybl",
+    "payee_name": "Receive Cashback",
+    "amount": "5000",
+    "note": "Scan to receive Rs 5000 cashback",
+    "merchant_code": "",
+    "registry": {
+      "is_mock": true,
+      "found": true,
+      "registered_name": "Ravi Kumar"
+    }
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "type": "qr",
+      "key": "info.payee_upi",
+      "value": "9876501234@ybl",
+      "label": "Money goes to this UPI ID",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E2",
+      "type": "qr",
+      "key": "info.payee_name",
+      "value": "Receive Cashback",
+      "label": "Name written inside the QR (anyone can type this)",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E3",
+      "type": "qr",
+      "key": "qr.prefilled_amount",
+      "value": "₹5,000",
+      "label": "Amount is already filled in",
+      "severity": "high",
+      "params": {
+        "amount": "5,000"
+      }
+    },
+    {
+      "id": "E4",
+      "type": "qr",
+      "key": "info.note",
+      "value": "Scan to receive Rs 5000 cashback",
+      "label": "Payment note inside the QR",
+      "severity": "info",
+      "params": {}
+    },
+    {
+      "id": "E5",
+      "type": "qr",
+      "key": "qr.receive_wording",
+      "value": "receive, cashback",
+      "label": "Promises you will receive money",
+      "severity": "high",
+      "params": {
+        "words": "Scan to receive Rs 5000 cashback"
+      }
+    },
+    {
+      "id": "E6",
+      "type": "qr",
+      "key": "qr.personal_handle",
+      "value": "9876501234@ybl",
+      "label": "Personal mobile-number UPI ID, not a shop",
+      "severity": "medium",
+      "params": {
+        "upi": "9876501234@ybl"
+      }
+    },
+    {
+      "id": "E7",
+      "type": "qr",
+      "key": "qr.registry_mismatch",
+      "value": "Registered to \"Ravi Kumar\"",
+      "label": "Registered name differs from QR (demo data)",
+      "severity": "high",
+      "params": {
+        "registered": "Ravi Kumar",
+        "pn": "Receive Cashback"
+      }
+    }
+  ]
+}

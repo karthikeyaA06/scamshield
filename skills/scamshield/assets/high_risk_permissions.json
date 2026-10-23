@@ -1,0 +1,14 @@
+{
+  "_comment": "Android permissions that scam apps commonly abuse. Keys are the short permission names; values describe the risk in plain English.",
+  "READ_SMS": "Read all SMS messages, including bank OTPs",
+  "RECEIVE_SMS": "Receive SMS messages the moment they arrive",
+  "SEND_SMS": "Send SMS messages from the phone",
+  "BIND_ACCESSIBILITY_SERVICE": "See the screen and tap buttons on the user's behalf",
+  "BIND_NOTIFICATION_LISTENER_SERVICE": "Read every notification, including OTPs",
+  "SYSTEM_ALERT_WINDOW": "Draw fake screens on top of other apps",
+  "REQUEST_INSTALL_PACKAGES": "Ask to install more apps",
+  "READ_CONTACTS": "Read the contact list",
+  "READ_CALL_LOG": "Read call history",
+  "CALL_PHONE": "Make phone calls without dialling",
+  "QUERY_ALL_PACKAGES": "List every app installed on the phone"
+}
