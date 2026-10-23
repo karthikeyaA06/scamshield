@@ -22,66 +22,6 @@
       "expected": "Safe"
     },
     {
-      "id": "apk_kyc",
-      "kind": "apk",
-      "file": "fake_sbi_kyc_update.apk",
-      "title": "“SBI KYC Update” app",
-      "description": "SMS says your bank account will be blocked unless you install this.",
-      "title_kn": "“SBI KYC ಅಪ್‌ಡೇಟ್” ಆಪ್",
-      "description_kn": "ಇದನ್ನು ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡದಿದ್ದರೆ ಬ್ಯಾಂಕ್ ಖಾತೆ ಬ್ಲಾಕ್ ಆಗುತ್ತದೆ ಎಂದು SMS ಹೇಳುತ್ತದೆ.",
-      "expected": "Dangerous"
-    },
-    {
-      "id": "apk_pmkisan",
-      "kind": "apk",
-      "file": "fake_pm_kisan.apk",
-      "title": "“PM Kisan Yojana 2026” app",
-      "description": "Shared in a farmers' group to “check your installment”.",
-      "title_kn": "“PM ಕಿಸಾನ್ ಯೋಜನೆ 2026” ಆಪ್",
-      "description_kn": "“ನಿಮ್ಮ ಕಂತು ಪರಿಶೀಲಿಸಿ” ಎಂದು ರೈತರ ಗುಂಪಿನಲ್ಲಿ ಹಂಚಲಾಗಿದೆ.",
-      "expected": "Dangerous"
-    },
-    {
-      "id": "apk_loan",
-      "kind": "apk",
-      "file": "quickcash_loan.apk",
-      "title": "“QuickCash Instant Loan” app",
-      "description": "Promises a loan in 5 minutes with no documents.",
-      "title_kn": "“QuickCash ತ್ವರಿತ ಸಾಲ” ಆಪ್",
-      "description_kn": "ದಾಖಲೆಗಳಿಲ್ಲದೆ 5 ನಿಮಿಷದಲ್ಲಿ ಸಾಲದ ಭರವಸೆ ನೀಡುತ್ತದೆ.",
-      "expected": "Suspicious"
-    },
-    {
-      "id": "exe_receipt",
-      "kind": "exe",
-      "file": "Traffic_Challan_Receipt.pdf.exe",
-      "title": "“Traffic_Challan_Receipt.pdf”",
-      "description": "An email attachment that looks like a PDF receipt.",
-      "title_kn": "“ಟ್ರಾಫಿಕ್ ಚಲನ್ ರಸೀದಿ.pdf”",
-      "description_kn": "PDF ರಸೀದಿಯಂತೆ ಕಾಣುವ ಇಮೇಲ್ ಲಗತ್ತು.",
-      "expected": "Dangerous"
-    },
-    {
-      "id": "exe_renamed",
-      "kind": "exe",
-      "file": "PM_Kisan_Update.apk",
-      "title": "“PM_Kisan_Update.apk” (really a Windows program)",
-      "description": "Named like a phone app, but it is a program in disguise.",
-      "title_kn": "“PM_Kisan_Update.apk” (ನಿಜವಾಗಿ ವಿಂಡೋಸ್ ಪ್ರೋಗ್ರಾಂ)",
-      "description_kn": "ಫೋನ್ ಆಪ್‌ನಂತೆ ಹೆಸರಿದೆ, ಆದರೆ ಇದು ವೇಷ ಧರಿಸಿದ ಪ್ರೋಗ್ರಾಂ.",
-      "expected": "Dangerous"
-    },
-    {
-      "id": "exe_safe",
-      "kind": "exe",
-      "file": "PhotoViewer_Setup.exe",
-      "title": "PhotoViewer_Setup.exe",
-      "description": "An ordinary signed installer, for comparison.",
-      "title_kn": "PhotoViewer_Setup.exe",
-      "description_kn": "ಹೋಲಿಕೆಗಾಗಿ ಸಹಿ ಇರುವ ಸಾಮಾನ್ಯ ಇನ್‌ಸ್ಟಾಲರ್.",
-      "expected": "Safe"
-    },
-    {
       "kind": "qr",
       "id": "qr_shop",
       "file": "qr_shop.png",
@@ -113,61 +53,6 @@
       "title_kn": "ಅಂಗಡಿ QR ಮೇಲೆ ಅಂಟಿಸಿದ ಸ್ಟಿಕ್ಕರ್",
       "description_kn": "ನೀವು ಶರ್ಮಾ ಜನರಲ್ ಸ್ಟೋರ್‌ಗೆ ಪಾವತಿಸುತ್ತಿದ್ದೀರಿ, ಆದರೆ ಈ QR ಮೇಲೆ ಅಂಟಿಸಲಾಗಿತ್ತು.",
       "expected": "Suspicious"
-    },
-    {
-      "id": "sms_power",
-      "kind": "sms",
-      "expected": "Dangerous",
-      "title": "Electricity disconnection SMS",
-      "description": "Says your power will be cut tonight.",
-      "title_kn": "ವಿದ್ಯುತ್ ಕಡಿತದ SMS",
-      "description_kn": "ಇಂದು ರಾತ್ರಿ ವಿದ್ಯುತ್ ಕಡಿತವಾಗುತ್ತದೆ ಎನ್ನುತ್ತದೆ.",
-      "sender": "+91 98123 45678",
-      "text": "Dear Consumer, your electricity power will be disconnected tonight at 9.30 pm because your previous month bill was not updated. Please immediately contact our electricity officer 9876543210. Thank you."
-    },
-    {
-      "id": "sms_kyc",
-      "kind": "sms",
-      "expected": "Dangerous",
-      "title": "SBI KYC update SMS",
-      "description": "Account blocked unless you click a link.",
-      "title_kn": "SBI KYC ಅಪ್‌ಡೇಟ್ SMS",
-      "description_kn": "ಲಿಂಕ್ ಕ್ಲಿಕ್ ಮಾಡದಿದ್ದರೆ ಖಾತೆ ಬ್ಲಾಕ್ ಎನ್ನುತ್ತದೆ.",
-      "sender": "+91 70123 45678",
-      "text": "Dear SBI user, your YONO account will be blocked today. Update your PAN/KYC immediately: http://sbi-kyc-update.example/login"
-    },
-    {
-      "id": "sms_job",
-      "kind": "sms",
-      "expected": "Dangerous",
-      "title": "Part-time job WhatsApp",
-      "description": "Earn daily by liking YouTube videos.",
-      "title_kn": "ಪಾರ್ಟ್-ಟೈಮ್ ಉದ್ಯೋಗ WhatsApp",
-      "description_kn": "ವಿಡಿಯೋ ಲೈಕ್ ಮಾಡಿ ದಿನವೂ ಗಳಿಸಿ ಎನ್ನುತ್ತದೆ.",
-      "sender": "+91 98450 12345",
-      "text": "Hello! We are hiring for part-time work from home. Earn Rs 3,000 to Rs 8,000 daily by liking YouTube videos. Contact HR on Telegram: https://t.me/demo_hr_desk"
-    },
-    {
-      "id": "sms_arrest",
-      "kind": "sms",
-      "expected": "Dangerous",
-      "title": "“Cyber Crime Branch” message",
-      "description": "A drugs parcel and an arrest threat.",
-      "title_kn": "“ಸೈಬರ್ ಕ್ರೈಮ್ ಬ್ರಾಂಚ್” ಸಂದೇಶ",
-      "description_kn": "ಡ್ರಗ್ಸ್ ಪಾರ್ಸೆಲ್ ಮತ್ತು ಬಂಧನದ ಬೆದರಿಕೆ.",
-      "sender": "",
-      "text": "This is Mumbai Cyber Crime Branch. A parcel in your name containing drugs has been seized by customs. Your Aadhaar is linked to money laundering. Join the video call immediately or an arrest warrant will be issued."
-    },
-    {
-      "id": "sms_otp",
-      "kind": "sms",
-      "expected": "Safe",
-      "title": "Genuine bank OTP",
-      "description": "A real-style OTP message, for comparison.",
-      "title_kn": "ನಿಜವಾದ ಬ್ಯಾಂಕ್ OTP",
-      "description_kn": "ಹೋಲಿಕೆಗಾಗಿ ನಿಜವಾದ ಮಾದರಿಯ OTP ಸಂದೇಶ.",
-      "sender": "AX-HDFCBK",
-      "text": "482913 is your OTP for a transaction of Rs 1,250.00 at AMAZON on your HDFC Bank card ending 4417. Valid for 10 minutes. Do not share this OTP with anyone. -HDFC Bank"
     }
   ]
 }

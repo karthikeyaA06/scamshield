@@ -41,14 +41,7 @@ def tags():
 @app.post("/api/chat")
 async def chat(request: Request):
     body = await request.json()
-    try:
-        payload = json.loads(body["messages"][-1]["content"].split("\n\nYour last reply")[0])
-    except json.JSONDecodeError:  # warm-up ping from the server
-        return {"message": {"role": "assistant", "content": "OK"}}
-    delay = float(os.environ.get("FAKE_DELAY", "0"))  # simulate a slow laptop
-    if delay:
-        import asyncio
-        await asyncio.sleep(delay)
+    payload = json.loads(body["messages"][-1]["content"].split("\n\nYour last reply")[0])
     reasons = []
     for hit in payload["rules_triggered"]:
         if hit["rule"] in TEXT and len(reasons) < 3:

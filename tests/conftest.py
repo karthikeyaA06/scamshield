@@ -26,12 +26,3 @@ def demo_samples():
         from samples.make_demo_samples import main
         main()
     return SAMPLES
-
-
-@pytest.fixture(autouse=True)
-def clear_model_cache():
-    """Each test starts with an empty model-answer cache."""
-    from scripts import explain
-    explain._CACHE.clear()
-    yield
-    explain._CACHE.clear()

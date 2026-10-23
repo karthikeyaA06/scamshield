@@ -46,24 +46,24 @@
       "kn": "ಈ ಆಪ್ ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿರುವ ಎಲ್ಲಾ ಆಪ್‌ಗಳ ಪಟ್ಟಿಯನ್ನು, ಬ್ಯಾಂಕ್ ಆಪ್‌ಗಳನ್ನೂ ಸೇರಿ, ನೋಡಬಲ್ಲದು."
     },
     "string.telegram_bot": {
-      "en": "Its code contains a Telegram bot link. Scammers use these to receive stolen data.",
-      "kn": "ಇದರ ಕೋಡ್‌ನಲ್ಲಿ ಟೆಲಿಗ್ರಾಮ್ ಬಾಟ್ ಲಿಂಕ್ ಇದೆ. ವಂಚಕರು ಕದ್ದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ಇದನ್ನು ಬಳಸುತ್ತಾರೆ."
+      "en": "The app's code contains a Telegram bot link. Scammers use these to receive stolen data.",
+      "kn": "ಈ ಆಪ್‌ನ ಕೋಡ್‌ನಲ್ಲಿ ಟೆಲಿಗ್ರಾಮ್ ಬಾಟ್ ಲಿಂಕ್ ಇದೆ. ವಂಚಕರು ಕದ್ದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯಲು ಇದನ್ನು ಬಳಸುತ್ತಾರೆ."
     },
     "string.raw_ip": {
-      "en": "It connects to a bare server address ({host}) with no company name.",
-      "kn": "ಇದು ಕಂಪನಿ ಹೆಸರಿಲ್ಲದ ಸರ್ವರ್ ವಿಳಾಸಕ್ಕೆ ({host}) ಸಂಪರ್ಕಿಸುತ್ತದೆ."
+      "en": "The app connects to a bare server address ({host}) with no company name.",
+      "kn": "ಈ ಆಪ್ ಕಂಪನಿ ಹೆಸರಿಲ್ಲದ ಸರ್ವರ್ ವಿಳಾಸಕ್ಕೆ ({host}) ಸಂಪರ್ಕಿಸುತ್ತದೆ."
     },
     "string.firebase_db": {
       "en": "The app sends data to an online database. This alone is common, but worth noting.",
       "kn": "ಈ ಆಪ್ ಆನ್‌ಲೈನ್ ಡೇಟಾಬೇಸ್‌ಗೆ ಮಾಹಿತಿ ಕಳುಹಿಸುತ್ತದೆ. ಇದು ಸಾಮಾನ್ಯ, ಆದರೂ ಗಮನಿಸಬೇಕಾದದ್ದು."
     },
     "string.sensitive_keywords": {
-      "en": "Its code mentions sensitive words: {words}.",
-      "kn": "ಇದರ ಕೋಡ್‌ನಲ್ಲಿ ಸೂಕ್ಷ್ಮ ಪದಗಳಿವೆ: {words}."
+      "en": "The app's code mentions sensitive words: {words}.",
+      "kn": "ಈ ಆಪ್‌ನ ಕೋಡ್‌ನಲ್ಲಿ ಸೂಕ್ಷ್ಮ ಪದಗಳಿವೆ: {words}."
     },
     "impersonation": {
-      "en": "The name looks like an official {entity} app or file, but it is not from the official publisher.",
-      "kn": "ಈ ಹೆಸರು ಅಧಿಕೃತ {entity} ಆಪ್ ಅಥವಾ ಫೈಲ್‌ನಂತೆ ಕಾಣುತ್ತದೆ, ಆದರೆ ಇದು ಅಧಿಕೃತ ಪ್ರಕಾಶಕರಿಂದ ಬಂದದ್ದಲ್ಲ."
+      "en": "The app's name looks like an official {entity} app, but it is not from the official publisher.",
+      "kn": "ಈ ಆಪ್‌ನ ಹೆಸರು ಅಧಿಕೃತ {entity} ಆಪ್‌ನಂತೆ ಕಾಣುತ್ತದೆ, ಆದರೆ ಇದು ಅಧಿಕೃತ ಪ್ರಕಾಶಕರಿಂದ ಬಂದದ್ದಲ್ಲ."
     },
     "cert.debug": {
       "en": "The app is signed with a test (debug) certificate. Real companies do not publish apps this way.",
@@ -120,106 +120,6 @@
     "combo.fake_receive": {
       "en": "A filled-in amount plus a \"receive money\" message together is a well-known QR scam.",
       "kn": "ಮೊದಲೇ ತುಂಬಿದ ಮೊತ್ತ ಮತ್ತು \"ಹಣ ಪಡೆಯಿರಿ\" ಸಂದೇಶ ಒಟ್ಟಿಗೆ ಇರುವುದು ಪ್ರಸಿದ್ಧ QR ವಂಚನೆ."
-    },
-    "exe.windows_program": {
-      "en": "This is a Windows computer program, not a phone app or a document. Scammers send these to take over computers.",
-      "kn": "ಇದು ವಿಂಡೋಸ್ ಕಂಪ್ಯೂಟರ್ ಪ್ರೋಗ್ರಾಂ, ಫೋನ್ ಆಪ್ ಅಥವಾ ದಾಖಲೆ ಅಲ್ಲ. ಕಂಪ್ಯೂಟರ್ ಅನ್ನು ವಶಪಡಿಸಿಕೊಳ್ಳಲು ವಂಚಕರು ಇಂತಹ ಫೈಲ್‌ಗಳನ್ನು ಕಳುಹಿಸುತ್ತಾರೆ."
-    },
-    "exe.double_extension": {
-      "en": "The name \"{name}\" pretends to be a {fake} file, but it is really a program (.exe).",
-      "kn": "\"{name}\" ಎಂಬ ಹೆಸರು {fake} ಫೈಲ್‌ನಂತೆ ನಟಿಸುತ್ತದೆ, ಆದರೆ ಇದು ನಿಜವಾಗಿ ಒಂದು ಪ್ರೋಗ್ರಾಂ (.exe)."
-    },
-    "exe.disguised_extension": {
-      "en": "This file is named like a .{ext} file, but inside it is a Windows program. It is in disguise.",
-      "kn": "ಈ ಫೈಲ್‌ನ ಹೆಸರು .{ext} ಫೈಲ್‌ನಂತಿದೆ, ಆದರೆ ಒಳಗೆ ಇದು ವಿಂಡೋಸ್ ಪ್ರೋಗ್ರಾಂ. ಇದು ವೇಷ ಧರಿಸಿದೆ."
-    },
-    "exe.hidden_name": {
-      "en": "The file name uses a hidden character to flip and hide its real extension.",
-      "kn": "ನಿಜವಾದ ವಿಸ್ತರಣೆಯನ್ನು ಮರೆಮಾಡಲು ಫೈಲ್ ಹೆಸರು ಕಾಣದ ಅಕ್ಷರವನ್ನು ಬಳಸುತ್ತದೆ."
-    },
-    "exe.keylogger_api": {
-      "en": "The program can record every key you press, including passwords.",
-      "kn": "ಈ ಪ್ರೋಗ್ರಾಂ ನೀವು ಒತ್ತುವ ಪ್ರತಿ ಕೀಯನ್ನು, ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನೂ ಸೇರಿ, ದಾಖಲಿಸಬಲ್ಲದು."
-    },
-    "exe.packer": {
-      "en": "The program hides its real code using a packing tool ({words}).",
-      "kn": "ಈ ಪ್ರೋಗ್ರಾಂ ತನ್ನ ನಿಜವಾದ ಕೋಡ್ ಅನ್ನು ಮರೆಮಾಡುವ ಸಾಧನ ({words}) ಬಳಸುತ್ತದೆ."
-    },
-    "exe.unsigned": {
-      "en": "The program has no publisher signature, so nobody can tell who made it.",
-      "kn": "ಈ ಪ್ರೋಗ್ರಾಂಗೆ ಪ್ರಕಾಶಕರ ಸಹಿ ಇಲ್ಲ. ಇದನ್ನು ಯಾರು ತಯಾರಿಸಿದರು ಎಂದು ತಿಳಿಯಲು ಸಾಧ್ಯವಿಲ್ಲ."
-    },
-    "combo.keylogger_exfil": {
-      "en": "It can record your passwords and send them to the scammer.",
-      "kn": "ಇದು ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನು ದಾಖಲಿಸಿ ವಂಚಕರಿಗೆ ಕಳುಹಿಸಬಲ್ಲದು."
-    },
-    "sms.short_link": {
-      "en": "It hides the real website behind a short link ({host}).",
-      "kn": "ಇದು ನಿಜವಾದ ವೆಬ್‌ಸೈಟ್ ಅನ್ನು ಸಣ್ಣ ಲಿಂಕ್ ({host}) ಹಿಂದೆ ಮರೆಮಾಡುತ್ತದೆ."
-    },
-    "sms.lookalike_domain": {
-      "en": "The link {host} pretends to be {brand}, but it is not their official website.",
-      "kn": "{host} ಲಿಂಕ್ {brand} ನಂತೆ ನಟಿಸುತ್ತದೆ, ಆದರೆ ಅದು ಅವರ ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್ ಅಲ್ಲ."
-    },
-    "sms.apk_link": {
-      "en": "The link downloads an app file (.apk). Banks and government offices never send apps by message.",
-      "kn": "ಈ ಲಿಂಕ್ ಆಪ್ ಫೈಲ್ (.apk) ಡೌನ್‌ಲೋಡ್ ಮಾಡುತ್ತದೆ. ಬ್ಯಾಂಕ್‌ಗಳು ಮತ್ತು ಸರ್ಕಾರಿ ಕಚೇರಿಗಳು ಎಂದಿಗೂ ಸಂದೇಶದ ಮೂಲಕ ಆಪ್ ಕಳುಹಿಸುವುದಿಲ್ಲ."
-    },
-    "sms.chat_link": {
-      "en": "It moves you to a private WhatsApp or Telegram chat, away from official channels.",
-      "kn": "ಇದು ನಿಮ್ಮನ್ನು ಅಧಿಕೃತ ಮಾರ್ಗಗಳಿಂದ ದೂರ, ಖಾಸಗಿ WhatsApp ಅಥವಾ ಟೆಲಿಗ್ರಾಮ್ ಚಾಟ್‌ಗೆ ಕರೆದೊಯ್ಯುತ್ತದೆ."
-    },
-    "sms.urgency": {
-      "en": "It rushes you (\"{words}\") so you act before you think.",
-      "kn": "ಯೋಚಿಸುವ ಮೊದಲೇ ನೀವು ಕ್ರಮ ಕೈಗೊಳ್ಳುವಂತೆ ಇದು ಆತುರಪಡಿಸುತ್ತದೆ (\"{words}\")."
-    },
-    "sms.asks_secret": {
-      "en": "It asks for secret details ({words}). No real bank or office ever asks for these.",
-      "kn": "ಇದು ರಹಸ್ಯ ವಿವರಗಳನ್ನು ({words}) ಕೇಳುತ್ತದೆ. ಯಾವುದೇ ನಿಜವಾದ ಬ್ಯಾಂಕ್ ಅಥವಾ ಕಚೇರಿ ಇವುಗಳನ್ನು ಎಂದಿಗೂ ಕೇಳುವುದಿಲ್ಲ."
-    },
-    "sms.money_lure": {
-      "en": "It promises money or prizes (\"{words}\"). This is a common bait.",
-      "kn": "ಇದು ಹಣ ಅಥವಾ ಬಹುಮಾನದ ಭರವಸೆ ನೀಡುತ್ತದೆ (\"{words}\"). ಇದು ಸಾಮಾನ್ಯ ಆಮಿಷ."
-    },
-    "sms.kyc_update": {
-      "en": "It says your account will be blocked unless you update KYC or PAN. Banks don't do this through message links.",
-      "kn": "KYC ಅಥವಾ PAN ಅಪ್‌ಡೇಟ್ ಮಾಡದಿದ್ದರೆ ಖಾತೆ ಬ್ಲಾಕ್ ಆಗುತ್ತದೆ ಎಂದು ಇದು ಹೇಳುತ್ತದೆ. ಬ್ಯಾಂಕ್‌ಗಳು ಸಂದೇಶದ ಲಿಂಕ್ ಮೂಲಕ ಹೀಗೆ ಮಾಡುವುದಿಲ್ಲ."
-    },
-    "sms.job_scam": {
-      "en": "It offers easy money for simple online tasks. This is the part-time job scam.",
-      "kn": "ಸರಳ ಆನ್‌ಲೈನ್ ಕೆಲಸಗಳಿಗೆ ಸುಲಭ ಹಣದ ಭರವಸೆ ನೀಡುತ್ತದೆ. ಇದು ಪಾರ್ಟ್-ಟೈಮ್ ಉದ್ಯೋಗ ವಂಚನೆ."
-    },
-    "sms.authority_threat": {
-      "en": "It threatens you in the name of police, CBI or customs. Real officers never do this by message or video call.",
-      "kn": "ಇದು ಪೊಲೀಸ್, CBI ಅಥವಾ ಕಸ್ಟಮ್ಸ್ ಹೆಸರಿನಲ್ಲಿ ಬೆದರಿಸುತ್ತದೆ. ನಿಜವಾದ ಅಧಿಕಾರಿಗಳು ಸಂದೇಶ ಅಥವಾ ವಿಡಿಯೋ ಕರೆಯಲ್ಲಿ ಹೀಗೆ ಮಾಡುವುದಿಲ್ಲ."
-    },
-    "sms.power_cut": {
-      "en": "It threatens to cut your electricity. Electricity boards don't send such warnings from personal numbers.",
-      "kn": "ಇದು ನಿಮ್ಮ ವಿದ್ಯುತ್ ಕಡಿತಗೊಳಿಸುವುದಾಗಿ ಬೆದರಿಸುತ್ತದೆ. ವಿದ್ಯುತ್ ಮಂಡಳಿಗಳು ವೈಯಕ್ತಿಕ ಸಂಖ್ಯೆಗಳಿಂದ ಇಂತಹ ಎಚ್ಚರಿಕೆ ಕಳುಹಿಸುವುದಿಲ್ಲ."
-    },
-    "sms.call_number": {
-      "en": "It asks you to call a personal mobile number ({number}).",
-      "kn": "ಇದು ವೈಯಕ್ತಿಕ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಗೆ ({number}) ಕರೆ ಮಾಡಲು ಹೇಳುತ್ತದೆ."
-    },
-    "sms.personal_sender": {
-      "en": "It claims to be from an organisation, but it was sent from a personal number ({sender}).",
-      "kn": "ಇದು ಒಂದು ಸಂಸ್ಥೆಯಿಂದ ಬಂದದ್ದು ಎಂದು ಹೇಳುತ್ತದೆ, ಆದರೆ ವೈಯಕ್ತಿಕ ಸಂಖ್ಯೆಯಿಂದ ({sender}) ಕಳುಹಿಸಲಾಗಿದೆ."
-    },
-    "combo.sms_phish": {
-      "en": "A suspicious link plus pressure to act fast is the classic phishing pattern.",
-      "kn": "ಅನುಮಾನಾಸ್ಪದ ಲಿಂಕ್ ಮತ್ತು ತ್ವರಿತವಾಗಿ ಕ್ರಮ ಕೈಗೊಳ್ಳುವ ಒತ್ತಡ ಒಟ್ಟಿಗೆ ಇರುವುದು ಸಾಮಾನ್ಯ ಫಿಶಿಂಗ್ ಮಾದರಿ."
-    },
-    "combo.sms_secret_grab": {
-      "en": "It pressures you and asks for secret codes together. Someone is trying to take over your account.",
-      "kn": "ಇದು ಒತ್ತಡ ಹೇರುತ್ತಾ ರಹಸ್ಯ ಕೋಡ್‌ಗಳನ್ನು ಕೇಳುತ್ತದೆ. ಯಾರೋ ನಿಮ್ಮ ಖಾತೆಯನ್ನು ವಶಪಡಿಸಿಕೊಳ್ಳಲು ಪ್ರಯತ್ನಿಸುತ್ತಿದ್ದಾರೆ."
-    },
-    "combo.digital_arrest": {
-      "en": "Threats from \"officials\" plus urgency is the digital arrest scam. There is no such thing as a digital arrest in Indian law.",
-      "kn": "\"ಅಧಿಕಾರಿಗಳ\" ಬೆದರಿಕೆ ಮತ್ತು ಆತುರ ಒಟ್ಟಿಗೆ ಇರುವುದು ಡಿಜಿಟಲ್ ಅರೆಸ್ಟ್ ವಂಚನೆ. ಭಾರತೀಯ ಕಾನೂನಿನಲ್ಲಿ ಡಿಜಿಟಲ್ ಅರೆಸ್ಟ್ ಎಂಬುದೇ ಇಲ್ಲ."
-    },
-    "combo.task_scam": {
-      "en": "Easy money for online tasks, moved to a private chat, is the task scam. They pay small amounts first, then ask you to deposit money.",
-      "kn": "ಆನ್‌ಲೈನ್ ಕೆಲಸಗಳಿಗೆ ಸುಲಭ ಹಣ ಮತ್ತು ಖಾಸಗಿ ಚಾಟ್ ಒಟ್ಟಿಗೆ ಇರುವುದು ಟಾಸ್ಕ್ ವಂಚನೆ. ಮೊದಲು ಸಣ್ಣ ಮೊತ್ತ ನೀಡಿ, ನಂತರ ನಿಮ್ಮಿಂದ ಹಣ ಕಟ್ಟಲು ಕೇಳುತ್ತಾರೆ."
     }
   },
   "summaries": {
@@ -250,215 +150,41 @@
         "en": "No scam signs found. Before entering your PIN, check the name your payment app shows.",
         "kn": "ವಂಚನೆಯ ಲಕ್ಷಣಗಳು ಕಂಡುಬಂದಿಲ್ಲ. PIN ನಮೂದಿಸುವ ಮೊದಲು ಪಾವತಿ ಆಪ್ ತೋರಿಸುವ ಹೆಸರನ್ನು ಪರಿಶೀಲಿಸಿ."
       }
-    },
-    "exe": {
-      "Dangerous": {
-        "en": "Do not open this file. It shows clear signs of a scam.",
-        "kn": "ಈ ಫೈಲ್ ಅನ್ನು ತೆರೆಯಬೇಡಿ. ಇದರಲ್ಲಿ ವಂಚನೆಯ ಸ್ಪಷ್ಟ ಲಕ್ಷಣಗಳಿವೆ."
-      },
-      "Suspicious": {
-        "en": "Be careful. Only run programs downloaded from the maker's official website.",
-        "kn": "ಎಚ್ಚರಿಕೆ. ತಯಾರಕರ ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ನಿಂದ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ಪ್ರೋಗ್ರಾಂಗಳನ್ನು ಮಾತ್ರ ಚಲಾಯಿಸಿ."
-      },
-      "Safe": {
-        "en": "No scam signs found. The program carries a publisher signature.",
-        "kn": "ವಂಚನೆಯ ಲಕ್ಷಣಗಳು ಕಂಡುಬಂದಿಲ್ಲ. ಪ್ರೋಗ್ರಾಂಗೆ ಪ್ರಕಾಶಕರ ಸಹಿ ಇದೆ."
-      }
-    },
-    "sms": {
-      "Dangerous": {
-        "en": "This message is a scam. Do not click, call or reply.",
-        "kn": "ಈ ಸಂದೇಶ ವಂಚನೆ. ಕ್ಲಿಕ್ ಮಾಡಬೇಡಿ, ಕರೆ ಮಾಡಬೇಡಿ ಅಥವಾ ಉತ್ತರಿಸಬೇಡಿ."
-      },
-      "Suspicious": {
-        "en": "This message looks suspicious. Check with the organisation using its official number.",
-        "kn": "ಈ ಸಂದೇಶ ಅನುಮಾನಾಸ್ಪದವಾಗಿದೆ. ಸಂಸ್ಥೆಯ ಅಧಿಕೃತ ಸಂಖ್ಯೆಯ ಮೂಲಕ ಪರಿಶೀಲಿಸಿ."
-      },
-      "Safe": {
-        "en": "No scam signs found. Still, never share an OTP or PIN with anyone.",
-        "kn": "ವಂಚನೆಯ ಲಕ್ಷಣಗಳು ಕಂಡುಬಂದಿಲ್ಲ. ಆದರೂ OTP ಅಥವಾ PIN ಅನ್ನು ಯಾರೊಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ."
-      }
     }
   },
   "next_steps": {
     "apk": {
       "Dangerous": [
-        {
-          "en": "Do not install it. Delete the file.",
-          "kn": "ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಬೇಡಿ. ಫೈಲ್ ಅನ್ನು ಅಳಿಸಿ."
-        },
-        {
-          "en": "If you already installed it, turn off mobile data and uninstall it.",
-          "kn": "ಈಗಾಗಲೇ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿದ್ದರೆ, ಮೊಬೈಲ್ ಡೇಟಾ ಆಫ್ ಮಾಡಿ ಮತ್ತು ಆಪ್ ತೆಗೆದುಹಾಕಿ."
-        },
-        {
-          "en": "If money was taken, call 1930 right away and tell your bank.",
-          "kn": "ಹಣ ಹೋಗಿದ್ದರೆ, ತಕ್ಷಣ 1930 ಗೆ ಕರೆ ಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿ."
-        },
-        {
-          "en": "Report it at cybercrime.gov.in.",
-          "kn": "cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."
-        }
+        {"en": "Do not install it. Delete the file.", "kn": "ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಬೇಡಿ. ಫೈಲ್ ಅನ್ನು ಅಳಿಸಿ."},
+        {"en": "If you already installed it, turn off mobile data and uninstall it.", "kn": "ಈಗಾಗಲೇ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿದ್ದರೆ, ಮೊಬೈಲ್ ಡೇಟಾ ಆಫ್ ಮಾಡಿ ಮತ್ತು ಆಪ್ ತೆಗೆದುಹಾಕಿ."},
+        {"en": "If money was taken, call 1930 right away and tell your bank.", "kn": "ಹಣ ಹೋಗಿದ್ದರೆ, ತಕ್ಷಣ 1930 ಗೆ ಕರೆ ಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿ."},
+        {"en": "Report it at cybercrime.gov.in.", "kn": "cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."}
       ],
       "Suspicious": [
-        {
-          "en": "Do not install it from this file. Search for the official app on the Play Store.",
-          "kn": "ಈ ಫೈಲ್‌ನಿಂದ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಬೇಡಿ. Play Store ನಲ್ಲಿ ಅಧಿಕೃತ ಆಪ್ ಹುಡುಕಿ."
-        },
-        {
-          "en": "Ask the sender how they got it. Officials never send apps on WhatsApp.",
-          "kn": "ಕಳುಹಿಸಿದವರನ್ನು ಕೇಳಿ. ಅಧಿಕಾರಿಗಳು ಎಂದಿಗೂ WhatsApp ನಲ್ಲಿ ಆಪ್ ಕಳುಹಿಸುವುದಿಲ್ಲ."
-        },
-        {
-          "en": "If you lose money, call 1930 or report at cybercrime.gov.in.",
-          "kn": "ಹಣ ಕಳೆದುಕೊಂಡರೆ, 1930 ಗೆ ಕರೆ ಮಾಡಿ ಅಥವಾ cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."
-        }
+        {"en": "Do not install it from this file. Search for the official app on the Play Store.", "kn": "ಈ ಫೈಲ್‌ನಿಂದ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಬೇಡಿ. Play Store ನಲ್ಲಿ ಅಧಿಕೃತ ಆಪ್ ಹುಡುಕಿ."},
+        {"en": "Ask the sender how they got it. Officials never send apps on WhatsApp.", "kn": "ಕಳುಹಿಸಿದವರನ್ನು ಕೇಳಿ. ಅಧಿಕಾರಿಗಳು ಎಂದಿಗೂ WhatsApp ನಲ್ಲಿ ಆಪ್ ಕಳುಹಿಸುವುದಿಲ್ಲ."},
+        {"en": "If you lose money, call 1930 or report at cybercrime.gov.in.", "kn": "ಹಣ ಕಳೆದುಕೊಂಡರೆ, 1930 ಗೆ ಕರೆ ಮಾಡಿ ಅಥವಾ cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."}
       ],
       "Safe": [
-        {
-          "en": "Prefer the Play Store version of any app.",
-          "kn": "ಯಾವುದೇ ಆಪ್‌ನ Play Store ಆವೃತ್ತಿಯನ್ನೇ ಆಯ್ಕೆ ಮಾಡಿ."
-        },
-        {
-          "en": "Never share an OTP, even with someone who says they are from your bank.",
-          "kn": "ಬ್ಯಾಂಕ್‌ನಿಂದ ಎಂದು ಹೇಳುವವರಿಗೂ OTP ಹಂಚಿಕೊಳ್ಳಬೇಡಿ."
-        }
+        {"en": "Prefer the Play Store version of any app.", "kn": "ಯಾವುದೇ ಆಪ್‌ನ Play Store ಆವೃತ್ತಿಯನ್ನೇ ಆಯ್ಕೆ ಮಾಡಿ."},
+        {"en": "Never share an OTP, even with someone who says they are from your bank.", "kn": "ಬ್ಯಾಂಕ್‌ನಿಂದ ಎಂದು ಹೇಳುವವರಿಗೂ OTP ಹಂಚಿಕೊಳ್ಳಬೇಡಿ."}
       ]
     },
     "qr": {
       "Dangerous": [
-        {
-          "en": "Do not pay and do not enter your UPI PIN.",
-          "kn": "ಹಣ ಪಾವತಿಸಬೇಡಿ ಮತ್ತು UPI PIN ನಮೂದಿಸಬೇಡಿ."
-        },
-        {
-          "en": "Remember: you never need a PIN to receive money.",
-          "kn": "ನೆನಪಿಡಿ: ಹಣ ಪಡೆಯಲು ಎಂದಿಗೂ PIN ಬೇಕಾಗಿಲ್ಲ."
-        },
-        {
-          "en": "If money was taken, call 1930 right away and tell your bank.",
-          "kn": "ಹಣ ಹೋಗಿದ್ದರೆ, ತಕ್ಷಣ 1930 ಗೆ ಕರೆ ಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿ."
-        },
-        {
-          "en": "Report it at cybercrime.gov.in.",
-          "kn": "cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."
-        }
+        {"en": "Do not pay and do not enter your UPI PIN.", "kn": "ಹಣ ಪಾವತಿಸಬೇಡಿ ಮತ್ತು UPI PIN ನಮೂದಿಸಬೇಡಿ."},
+        {"en": "Remember: you never need a PIN to receive money.", "kn": "ನೆನಪಿಡಿ: ಹಣ ಪಡೆಯಲು ಎಂದಿಗೂ PIN ಬೇಕಾಗಿಲ್ಲ."},
+        {"en": "If money was taken, call 1930 right away and tell your bank.", "kn": "ಹಣ ಹೋಗಿದ್ದರೆ, ತಕ್ಷಣ 1930 ಗೆ ಕರೆ ಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿ."},
+        {"en": "Report it at cybercrime.gov.in.", "kn": "cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."}
       ],
       "Suspicious": [
-        {
-          "en": "Before entering your PIN, read the name your payment app shows.",
-          "kn": "PIN ನಮೂದಿಸುವ ಮೊದಲು, ಪಾವತಿ ಆಪ್ ತೋರಿಸುವ ಹೆಸರನ್ನು ಓದಿ."
-        },
-        {
-          "en": "If it does not match the shop, stop and ask the shopkeeper.",
-          "kn": "ಅದು ಅಂಗಡಿಯ ಹೆಸರಿಗೆ ಹೊಂದದಿದ್ದರೆ, ನಿಲ್ಲಿಸಿ ಮತ್ತು ಅಂಗಡಿಯವರನ್ನು ಕೇಳಿ."
-        },
-        {
-          "en": "Check that no sticker has been pasted over the shop's QR.",
-          "kn": "ಅಂಗಡಿಯ QR ಮೇಲೆ ಬೇರೆ ಸ್ಟಿಕ್ಕರ್ ಅಂಟಿಸಿಲ್ಲವೇ ಎಂದು ನೋಡಿ."
-        }
+        {"en": "Before entering your PIN, read the name your payment app shows.", "kn": "PIN ನಮೂದಿಸುವ ಮೊದಲು, ಪಾವತಿ ಆಪ್ ತೋರಿಸುವ ಹೆಸರನ್ನು ಓದಿ."},
+        {"en": "If it does not match the shop, stop and ask the shopkeeper.", "kn": "ಅದು ಅಂಗಡಿಯ ಹೆಸರಿಗೆ ಹೊಂದದಿದ್ದರೆ, ನಿಲ್ಲಿಸಿ ಮತ್ತು ಅಂಗಡಿಯವರನ್ನು ಕೇಳಿ."},
+        {"en": "Check that no sticker has been pasted over the shop's QR.", "kn": "ಅಂಗಡಿಯ QR ಮೇಲೆ ಬೇರೆ ಸ್ಟಿಕ್ಕರ್ ಅಂಟಿಸಿಲ್ಲವೇ ಎಂದು ನೋಡಿ."}
       ],
       "Safe": [
-        {
-          "en": "Before entering your PIN, check the name your payment app shows.",
-          "kn": "PIN ನಮೂದಿಸುವ ಮೊದಲು, ಪಾವತಿ ಆಪ್ ತೋರಿಸುವ ಹೆಸರನ್ನು ಪರಿಶೀಲಿಸಿ."
-        },
-        {
-          "en": "Type the amount yourself and check it before paying.",
-          "kn": "ಮೊತ್ತವನ್ನು ನೀವೇ ನಮೂದಿಸಿ ಮತ್ತು ಪಾವತಿಸುವ ಮೊದಲು ಪರಿಶೀಲಿಸಿ."
-        }
-      ]
-    },
-    "exe": {
-      "Dangerous": [
-        {
-          "en": "Do not open it. Delete the file.",
-          "kn": "ಅದನ್ನು ತೆರೆಯಬೇಡಿ. ಫೈಲ್ ಅನ್ನು ಅಳಿಸಿ."
-        },
-        {
-          "en": "If you already opened it, disconnect from the internet and run a full antivirus scan.",
-          "kn": "ಈಗಾಗಲೇ ತೆರೆದಿದ್ದರೆ, ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ ಮತ್ತು ಪೂರ್ಣ ಆಂಟಿವೈರಸ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ."
-        },
-        {
-          "en": "Change your passwords from a different device.",
-          "kn": "ಬೇರೆ ಸಾಧನದಿಂದ ನಿಮ್ಮ ಪಾಸ್‌ವರ್ಡ್‌ಗಳನ್ನು ಬದಲಾಯಿಸಿ."
-        },
-        {
-          "en": "If money was taken, call 1930 right away and tell your bank.",
-          "kn": "ಹಣ ಹೋಗಿದ್ದರೆ, ತಕ್ಷಣ 1930 ಗೆ ಕರೆ ಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿ."
-        },
-        {
-          "en": "Report it at cybercrime.gov.in.",
-          "kn": "cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."
-        }
-      ],
-      "Suspicious": [
-        {
-          "en": "Don't open programs sent on WhatsApp or by email.",
-          "kn": "WhatsApp ಅಥವಾ ಇಮೇಲ್‌ನಲ್ಲಿ ಬಂದ ಪ್ರೋಗ್ರಾಂಗಳನ್ನು ತೆರೆಯಬೇಡಿ."
-        },
-        {
-          "en": "Download software only from the maker's official website.",
-          "kn": "ತಯಾರಕರ ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ನಿಂದ ಮಾತ್ರ ಸಾಫ್ಟ್‌ವೇರ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ."
-        },
-        {
-          "en": "If you lose money, call 1930 or report at cybercrime.gov.in.",
-          "kn": "ಹಣ ಕಳೆದುಕೊಂಡರೆ, 1930 ಗೆ ಕರೆ ಮಾಡಿ ಅಥವಾ cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."
-        }
-      ],
-      "Safe": [
-        {
-          "en": "Check that the publisher is the company you expected.",
-          "kn": "ಪ್ರಕಾಶಕರು ನೀವು ನಿರೀಕ್ಷಿಸಿದ ಕಂಪನಿಯೇ ಎಂದು ಪರಿಶೀಲಿಸಿ."
-        },
-        {
-          "en": "Download software only from the maker's official website.",
-          "kn": "ತಯಾರಕರ ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ನಿಂದ ಮಾತ್ರ ಸಾಫ್ಟ್‌ವೇರ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ."
-        }
-      ]
-    },
-    "sms": {
-      "Dangerous": [
-        {
-          "en": "Do not click the link, call the number or reply.",
-          "kn": "ಲಿಂಕ್ ಕ್ಲಿಕ್ ಮಾಡಬೇಡಿ, ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಬೇಡಿ ಅಥವಾ ಉತ್ತರಿಸಬೇಡಿ."
-        },
-        {
-          "en": "Block the sender and delete the message.",
-          "kn": "ಕಳುಹಿಸಿದವರನ್ನು ಬ್ಲಾಕ್ ಮಾಡಿ ಮತ್ತು ಸಂದೇಶ ಅಳಿಸಿ."
-        },
-        {
-          "en": "If money was taken, call 1930 right away and tell your bank.",
-          "kn": "ಹಣ ಹೋಗಿದ್ದರೆ, ತಕ್ಷಣ 1930 ಗೆ ಕರೆ ಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಬ್ಯಾಂಕ್‌ಗೆ ತಿಳಿಸಿ."
-        },
-        {
-          "en": "Report it at cybercrime.gov.in.",
-          "kn": "cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."
-        }
-      ],
-      "Suspicious": [
-        {
-          "en": "Don't use the link or number in the message. Call the official number from your card, bill or the official website.",
-          "kn": "ಸಂದೇಶದಲ್ಲಿರುವ ಲಿಂಕ್ ಅಥವಾ ಸಂಖ್ಯೆಯನ್ನು ಬಳಸಬೇಡಿ. ನಿಮ್ಮ ಕಾರ್ಡ್, ಬಿಲ್ ಅಥವಾ ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿರುವ ಅಧಿಕೃತ ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿ."
-        },
-        {
-          "en": "Never share an OTP, PIN or password.",
-          "kn": "OTP, PIN ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್ ಎಂದಿಗೂ ಹಂಚಿಕೊಳ್ಳಬೇಡಿ."
-        },
-        {
-          "en": "If you lose money, call 1930 or report at cybercrime.gov.in.",
-          "kn": "ಹಣ ಕಳೆದುಕೊಂಡರೆ, 1930 ಗೆ ಕರೆ ಮಾಡಿ ಅಥವಾ cybercrime.gov.in ನಲ್ಲಿ ದೂರು ನೀಡಿ."
-        }
-      ],
-      "Safe": [
-        {
-          "en": "Never share an OTP or PIN, even if someone calls saying they are from your bank.",
-          "kn": "ಬ್ಯಾಂಕ್‌ನಿಂದ ಎಂದು ಹೇಳಿ ಕರೆ ಮಾಡಿದರೂ OTP ಅಥವಾ PIN ಹಂಚಿಕೊಳ್ಳಬೇಡಿ."
-        },
-        {
-          "en": "If something seems off later, call the official number yourself.",
-          "kn": "ನಂತರ ಏನಾದರೂ ಸರಿಯಿಲ್ಲವೆಂದು ಅನಿಸಿದರೆ, ಅಧಿಕೃತ ಸಂಖ್ಯೆಗೆ ನೀವೇ ಕರೆ ಮಾಡಿ."
-        }
+        {"en": "Before entering your PIN, check the name your payment app shows.", "kn": "PIN ನಮೂದಿಸುವ ಮೊದಲು, ಪಾವತಿ ಆಪ್ ತೋರಿಸುವ ಹೆಸರನ್ನು ಪರಿಶೀಲಿಸಿ."},
+        {"en": "Type the amount yourself and check it before paying.", "kn": "ಮೊತ್ತವನ್ನು ನೀವೇ ನಮೂದಿಸಿ ಮತ್ತು ಪಾವತಿಸುವ ಮೊದಲು ಪರಿಶೀಲಿಸಿ."}
       ]
     }
   }

@@ -5,53 +5,28 @@
   // ------------------------------------------------------------------ strings
   const T = {
     en: {
-      tab_sms: "Message",
-      sms_label: "Paste the SMS or WhatsApp message",
-      sms_placeholder: "Dear customer, your account will be blocked today…",
-      sender_label: "Sender (optional)",
-      sender_placeholder: "e.g. AX-HDFCBK or +91 98…",
-      sms_hint: "Links in the message are never opened.",
-      check_sms: "Check this message",
-      msg_from: "From",
-      msg_unknown_sender: "Sender not given",
-      util_tagline: "Open-source, offline scam checker",
-      util_helpline: "Cyber fraud helpline",
-      nav_check: "Check",
-      nav_how: "How it works",
-      nav_limits: "Limits",
-      console_title: "New check",
-      console_offline: "Runs on this device",
-      working_title: "Inspecting",
-      report_title: "Inspection report",
-      report_id: "Check ID",
-      report_time: "Checked",
-      report_where: "Where",
-      report_device: "Offline, on this device",
-      print: "Print or save as PDF",
-      footer_independent: "ScamShield is an independent open-source project, not a government service.",
       status_checking: "Checking the local model",
       status_ready: "{model} is ready on this laptop",
       status_missing: "Ollama is running, but {model} isn't pulled. Using rule explanations.",
       status_off: "Model not running. Using rule explanations.",
       status_disabled: "Model turned off. Using rule explanations.",
       headline: "Check before you trust.",
-      lede: "Got an app, a program, a payment QR or a message you're not sure about? ScamShield checks it right here on this computer and tells you what it would really do.",
+      lede: "Got an app file or a payment QR you're not sure about? ScamShield checks it right here on this computer and tells you what it would really do.",
       promise_offline: "Works offline. Nothing is uploaded to the internet.",
-      promise_never_runs: "Never installs or runs the file.",
+      promise_never_runs: "Never installs or opens the app.",
       promise_lang: "Explains in English and Kannada.",
-      tab_apk: "App or program",
+      tab_apk: "App file (APK)",
       tab_qr: "Payment QR",
-      drop_apk: "Drop the app or program file here",
+      drop_apk: "Drop the app file here",
       drop_qr: "Drop a photo or screenshot of the QR",
       drop_or: "or",
       drop_choose: "choose a file",
-      drop_apk_hint: "Android .apk or Windows .exe, up to 100 MB",
+      drop_apk_hint: ".apk files up to 100 MB",
       drop_qr_hint: "PNG or JPG up to 10 MB",
       clear_file: "Remove",
       link_label: "Or paste a UPI link",
       shop_label: "Shop you think you're paying (optional)",
-      check_apk: "Check this file",
-      win_program: "Windows program",
+      check_apk: "Check this app",
       check_qr: "Check this QR",
       samples_title: "No file handy? Try a demo sample.",
       sample_go: "Check",
@@ -87,15 +62,12 @@
       t3: "Gemma's reading",
       t3_off: "Not used",
       t3_ok: "Answered in {s} s on this laptop.",
-      t3_cached: "Same file checked before, so Gemma's answer was reused instantly.",
       t3_dropped: "Removed {d} reason that cited no real evidence.",
-      t3_lang: "Replaced {n} sentence that wasn't in the right language.",
       t3_unavailable: "The model isn't running, so fixed rule explanations were used.",
       t3_invalid: "The model's reply was invalid twice, so rule explanations were used.",
       t4: "Final verdict",
       t4_raised: "Gemma said {mv}, but the rules require at least {floor}.",
-      t4_model_higher: "Gemma raised it above the rule score, citing real risk evidence.",
-      t4_capped: "Gemma said {mv}, but cited no real risk evidence, so the rules kept it {final}.",
+      t4_model_higher: "Gemma raised it above the rule score.",
       t4_agree: "Gemma and the rules agree.",
       t4_rules: "Set by the rules.",
       ev_all: "See all evidence ({n})",
@@ -125,53 +97,28 @@
       footer_repo: "Source code on GitHub",
     },
     kn: {
-      tab_sms: "ಸಂದೇಶ",
-      sms_label: "SMS ಅಥವಾ WhatsApp ಸಂದೇಶವನ್ನು ಅಂಟಿಸಿ",
-      sms_placeholder: "ಉದಾ: ನಿಮ್ಮ ಖಾತೆ ಇಂದು ಬ್ಲಾಕ್ ಆಗುತ್ತದೆ…",
-      sender_label: "ಕಳುಹಿಸಿದವರು (ಐಚ್ಛಿಕ)",
-      sender_placeholder: "ಉದಾ: AX-HDFCBK ಅಥವಾ +91 98…",
-      sms_hint: "ಸಂದೇಶದಲ್ಲಿರುವ ಲಿಂಕ್‌ಗಳನ್ನು ಎಂದಿಗೂ ತೆರೆಯುವುದಿಲ್ಲ.",
-      check_sms: "ಈ ಸಂದೇಶ ಪರಿಶೀಲಿಸಿ",
-      msg_from: "ಕಳುಹಿಸಿದವರು",
-      msg_unknown_sender: "ಕಳುಹಿಸಿದವರ ವಿವರ ನೀಡಿಲ್ಲ",
-      util_tagline: "ಮುಕ್ತ ಮೂಲ, ಆಫ್‌ಲೈನ್ ವಂಚನೆ ಪರಿಶೀಲಕ",
-      util_helpline: "ಸೈಬರ್ ವಂಚನೆ ಸಹಾಯವಾಣಿ",
-      nav_check: "ಪರಿಶೀಲಿಸಿ",
-      nav_how: "ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ",
-      nav_limits: "ಮಿತಿಗಳು",
-      console_title: "ಹೊಸ ಪರಿಶೀಲನೆ",
-      console_offline: "ಈ ಸಾಧನದಲ್ಲೇ ಚಲಿಸುತ್ತದೆ",
-      working_title: "ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ",
-      report_title: "ಪರಿಶೀಲನಾ ವರದಿ",
-      report_id: "ಪರಿಶೀಲನಾ ID",
-      report_time: "ಪರಿಶೀಲಿಸಿದ ಸಮಯ",
-      report_where: "ಎಲ್ಲಿ",
-      report_device: "ಆಫ್‌ಲೈನ್, ಈ ಸಾಧನದಲ್ಲೇ",
-      print: "ಮುದ್ರಿಸಿ ಅಥವಾ PDF ಆಗಿ ಉಳಿಸಿ",
-      footer_independent: "ScamShield ಒಂದು ಸ್ವತಂತ್ರ ಮುಕ್ತ ಮೂಲ ಯೋಜನೆ, ಸರ್ಕಾರಿ ಸೇವೆಯಲ್ಲ.",
       status_checking: "ಸ್ಥಳೀಯ ಮಾಡೆಲ್ ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ",
       status_ready: "{model} ಈ ಲ್ಯಾಪ್‌ಟಾಪ್‌ನಲ್ಲಿ ಸಿದ್ಧವಾಗಿದೆ",
       status_missing: "Ollama ಚಾಲನೆಯಲ್ಲಿದೆ, ಆದರೆ {model} ಡೌನ್‌ಲೋಡ್ ಆಗಿಲ್ಲ. ನಿಯಮ ಆಧಾರಿತ ವಿವರಣೆ ಬಳಸಲಾಗುತ್ತಿದೆ.",
       status_off: "ಮಾಡೆಲ್ ಚಾಲನೆಯಲ್ಲಿಲ್ಲ. ನಿಯಮ ಆಧಾರಿತ ವಿವರಣೆ ಬಳಸಲಾಗುತ್ತಿದೆ.",
       status_disabled: "ಮಾಡೆಲ್ ಆಫ್ ಮಾಡಲಾಗಿದೆ. ನಿಯಮ ಆಧಾರಿತ ವಿವರಣೆ ಬಳಸಲಾಗುತ್ತಿದೆ.",
       headline: "ನಂಬುವ ಮೊದಲು ಪರಿಶೀಲಿಸಿ.",
-      lede: "ಅನುಮಾನಾಸ್ಪದ ಆಪ್, ಪ್ರೋಗ್ರಾಂ, ಪಾವತಿ QR ಅಥವಾ ಸಂದೇಶ ಬಂದಿದೆಯೇ? ScamShield ಅದನ್ನು ಇದೇ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಪರಿಶೀಲಿಸಿ, ಅದು ನಿಜವಾಗಿ ಏನು ಮಾಡುತ್ತದೆ ಎಂದು ತಿಳಿಸುತ್ತದೆ.",
+      lede: "ಅನುಮಾನಾಸ್ಪದ ಆಪ್ ಫೈಲ್ ಅಥವಾ ಪಾವತಿ QR ಬಂದಿದೆಯೇ? ScamShield ಅದನ್ನು ಇದೇ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ ಪರಿಶೀಲಿಸಿ, ಅದು ನಿಜವಾಗಿ ಏನು ಮಾಡುತ್ತದೆ ಎಂದು ತಿಳಿಸುತ್ತದೆ.",
       promise_offline: "ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ. ಏನನ್ನೂ ಇಂಟರ್ನೆಟ್‌ಗೆ ಕಳುಹಿಸುವುದಿಲ್ಲ.",
-      promise_never_runs: "ಫೈಲ್ ಅನ್ನು ಎಂದಿಗೂ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡುವುದಿಲ್ಲ ಅಥವಾ ಚಲಾಯಿಸುವುದಿಲ್ಲ.",
+      promise_never_runs: "ಆಪ್ ಅನ್ನು ಎಂದಿಗೂ ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡುವುದಿಲ್ಲ ಅಥವಾ ತೆರೆಯುವುದಿಲ್ಲ.",
       promise_lang: "ಇಂಗ್ಲಿಷ್ ಮತ್ತು ಕನ್ನಡದಲ್ಲಿ ವಿವರಿಸುತ್ತದೆ.",
-      tab_apk: "ಆಪ್ ಅಥವಾ ಪ್ರೋಗ್ರಾಂ",
+      tab_apk: "ಆಪ್ ಫೈಲ್ (APK)",
       tab_qr: "ಪಾವತಿ QR",
-      drop_apk: "ಆಪ್ ಅಥವಾ ಪ್ರೋಗ್ರಾಂ ಫೈಲ್ ಅನ್ನು ಇಲ್ಲಿ ಹಾಕಿ",
+      drop_apk: "ಆಪ್ ಫೈಲ್ ಅನ್ನು ಇಲ್ಲಿ ಹಾಕಿ",
       drop_qr: "QR ನ ಫೋಟೋ ಅಥವಾ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಇಲ್ಲಿ ಹಾಕಿ",
       drop_or: "ಅಥವಾ",
       drop_choose: "ಫೈಲ್ ಆಯ್ಕೆಮಾಡಿ",
-      drop_apk_hint: "Android .apk ಅಥವಾ Windows .exe, 100 MB ವರೆಗೆ",
+      drop_apk_hint: ".apk ಫೈಲ್, 100 MB ವರೆಗೆ",
       drop_qr_hint: "PNG ಅಥವಾ JPG, 10 MB ವರೆಗೆ",
       clear_file: "ತೆಗೆದುಹಾಕಿ",
       link_label: "ಅಥವಾ UPI ಲಿಂಕ್ ಅಂಟಿಸಿ",
       shop_label: "ನೀವು ಪಾವತಿಸುತ್ತಿರುವ ಅಂಗಡಿ (ಐಚ್ಛಿಕ)",
-      check_apk: "ಈ ಫೈಲ್ ಪರಿಶೀಲಿಸಿ",
-      win_program: "ವಿಂಡೋಸ್ ಪ್ರೋಗ್ರಾಂ",
+      check_apk: "ಈ ಆಪ್ ಪರಿಶೀಲಿಸಿ",
       check_qr: "ಈ QR ಪರಿಶೀಲಿಸಿ",
       samples_title: "ಫೈಲ್ ಇಲ್ಲವೇ? ಡೆಮೊ ಮಾದರಿಯನ್ನು ಪ್ರಯತ್ನಿಸಿ.",
       sample_go: "ಪರಿಶೀಲಿಸಿ",
@@ -207,15 +154,12 @@
       t3: "Gemma ವಿಶ್ಲೇಷಣೆ",
       t3_off: "ಬಳಸಲಾಗಿಲ್ಲ",
       t3_ok: "ಈ ಲ್ಯಾಪ್‌ಟಾಪ್‌ನಲ್ಲಿ {s} ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಉತ್ತರಿಸಿತು.",
-      t3_cached: "ಇದೇ ಫೈಲ್ ಮೊದಲು ಪರಿಶೀಲಿಸಲಾಗಿದೆ, ಆದ್ದರಿಂದ Gemma ಉತ್ತರವನ್ನು ತಕ್ಷಣ ಮರುಬಳಸಲಾಗಿದೆ.",
       t3_dropped: "ನಿಜವಾದ ಸಾಕ್ಷ್ಯವಿಲ್ಲದ {d} ಕಾರಣವನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ.",
-      t3_lang: "ಸರಿಯಾದ ಭಾಷೆಯಲ್ಲಿ ಇಲ್ಲದ {n} ವಾಕ್ಯವನ್ನು ಬದಲಾಯಿಸಲಾಗಿದೆ.",
       t3_unavailable: "ಮಾಡೆಲ್ ಚಾಲನೆಯಲ್ಲಿಲ್ಲ, ಆದ್ದರಿಂದ ನಿಗದಿತ ನಿಯಮ ವಿವರಣೆಗಳನ್ನು ಬಳಸಲಾಗಿದೆ.",
       t3_invalid: "ಮಾಡೆಲ್ ಉತ್ತರ ಎರಡು ಬಾರಿ ಸರಿಯಾಗಿರಲಿಲ್ಲ, ಆದ್ದರಿಂದ ನಿಯಮ ವಿವರಣೆಗಳನ್ನು ಬಳಸಲಾಗಿದೆ.",
       t4: "ಅಂತಿಮ ತೀರ್ಮಾನ",
       t4_raised: "Gemma {mv} ಎಂದಿತು, ಆದರೆ ನಿಯಮಗಳ ಪ್ರಕಾರ ಕನಿಷ್ಠ {floor}.",
-      t4_model_higher: "ನಿಜವಾದ ಅಪಾಯದ ಸಾಕ್ಷ್ಯದೊಂದಿಗೆ Gemma ಇದನ್ನು ನಿಯಮ ಅಂಕಕ್ಕಿಂತ ಹೆಚ್ಚಿಸಿತು.",
-      t4_capped: "Gemma {mv} ಎಂದಿತು, ಆದರೆ ನಿಜವಾದ ಅಪಾಯದ ಸಾಕ್ಷ್ಯ ನೀಡಲಿಲ್ಲ, ಆದ್ದರಿಂದ ನಿಯಮಗಳು ಇದನ್ನು {final} ಆಗಿ ಉಳಿಸಿದವು.",
+      t4_model_higher: "Gemma ಇದನ್ನು ನಿಯಮ ಅಂಕಕ್ಕಿಂತ ಹೆಚ್ಚಿಸಿತು.",
       t4_agree: "Gemma ಮತ್ತು ನಿಯಮಗಳು ಒಪ್ಪುತ್ತವೆ.",
       t4_rules: "ನಿಯಮಗಳಿಂದ ನಿರ್ಧರಿಸಲಾಗಿದೆ.",
       ev_all: "ಎಲ್ಲಾ ಸಾಕ್ಷ್ಯ ನೋಡಿ ({n})",
@@ -247,11 +191,8 @@
   };
 
   const ICONS = {
-    sms: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h16a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H9l-4.5 3.5v-3.5H4A1.5 1.5 0 0 1 2.5 16V6A1.5 1.5 0 0 1 4 4.5z"/><path d="M7 9.5h10M7 13h6"/></svg>',
-    exe: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>',
     apk: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg>',
     qr: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg>',
-    report: '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4.5 5.5v6c0 5 3.3 8.6 7.5 10 4.2-1.4 7.5-5 7.5-10v-6z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/></svg>',
     phone: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h3.2l1.6 4.2-2.1 1.4a11 11 0 0 0 5.2 5.2l1.4-2.1 4.2 1.6V17a2.5 2.5 0 0 1-2.7 2.5C9.6 19 5 14.4 4.5 6.2A2.5 2.5 0 0 1 5 3.5z"/></svg>',
   };
 
@@ -281,7 +222,6 @@
   function applyLang() {
     document.documentElement.lang = state.lang;
     $$("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
-    $$("[data-i18n-placeholder]").forEach((el) => { el.placeholder = t(el.dataset.i18nPlaceholder); });
     $$(".lang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === state.lang)));
     renderStatus();
     renderSamples();
@@ -324,8 +264,7 @@
   function renderSamples() {
     const list = $("#sampleList");
     if (!state.samples.length) { list.innerHTML = ""; return; }
-    const forMode = (k) => (state.mode === "apk" ? k === "apk" || k === "exe" : k === state.mode);
-    list.innerHTML = state.samples.filter((s) => forMode(s.kind)).map((s) => {
+    list.innerHTML = state.samples.map((s) => {
       const title = state.lang === "kn" && s.title_kn ? s.title_kn : s.title;
       const desc = state.lang === "kn" && s.description_kn ? s.description_kn : s.description;
       return `<li><button type="button" data-sample="${esc(s.id)}">
@@ -348,9 +287,9 @@
     const btn = e.target.closest("button[data-sample]");
     if (!btn) return;
     const sample = state.samples.find((s) => s.id === btn.dataset.sample);
+    if (sample) setMode(sample.kind, false);
     btn.setAttribute("aria-busy", "true");
-    const label = sample ? (sample.file && sample.kind !== "qr" ? sample.file : (state.lang === "kn" && sample.title_kn) || sample.title) : "";
-    runCheck(fetch(`/api/samples/${encodeURIComponent(btn.dataset.sample)}/check`, { method: "POST" }), label)
+    runCheck(fetch(`/api/samples/${encodeURIComponent(btn.dataset.sample)}/check`, { method: "POST" }))
       .finally(() => btn.removeAttribute("aria-busy"));
   });
 
@@ -365,18 +304,14 @@
     });
     $("#panel-apk").hidden = mode !== "apk";
     $("#panel-qr").hidden = mode !== "qr";
-    $("#panel-sms").hidden = mode !== "sms";
     hideError();
-    renderSamples();
   }
-  const MODES = ["apk", "qr", "sms"];
   $$(".mode [role=tab]").forEach((tab) => {
     tab.addEventListener("click", () => setMode(tab.dataset.mode, false));
     tab.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
         e.preventDefault();
-        const step = e.key === "ArrowRight" ? 1 : MODES.length - 1;
-        setMode(MODES[(MODES.indexOf(state.mode) + step) % MODES.length], true);
+        setMode(state.mode === "apk" ? "qr" : "apk", true);
       }
     });
   });
@@ -392,10 +327,8 @@
     const submit = $("button[type=submit]", form);
     const link = $("input[name=link]", form);
 
-    // App tab: accept any file. The server checks the real type from the file's bytes,
-    // so a program renamed to .pdf or .apk is still caught.
     const valid = (file) => kind === "apk"
-      ? true
+      ? /\.apk$/i.test(file.name) || file.type === "application/vnd.android.package-archive"
       : /^image\//.test(file.type) || /\.(png|jpe?g|webp)$/i.test(file.name);
 
     const refresh = () => {
@@ -447,27 +380,7 @@
         fd.append("shop_name", $("input[name=shop_name]", form).value.trim());
       }
       submit.disabled = true;
-      const label = file ? file.name : (link ? link.value.trim().slice(0, 60) : "");
-      runCheck(fetch(`/api/check/${kind}`, { method: "POST", body: fd }), label).finally(refresh);
-    });
-    refresh();
-  }
-
-  function wireSms(form) {
-    const text = $("textarea[name=text]", form);
-    const sender = $("input[name=sender]", form);
-    const submit = $("button[type=submit]", form);
-    const refresh = () => { submit.disabled = !text.value.trim(); };
-    text.addEventListener("input", refresh);
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (submit.disabled) return;
-      const fd = new FormData();
-      fd.append("text", text.value);
-      fd.append("sender", sender.value.trim());
-      submit.disabled = true;
-      const label = text.value.trim().replace(/\s+/g, " ").slice(0, 48) + (text.value.trim().length > 48 ? "…" : "");
-      runCheck(fetch("/api/check/sms", { method: "POST", body: fd }), `“${label}”`).finally(refresh);
+      runCheck(fetch(`/api/check/${kind}`, { method: "POST", body: fd })).finally(refresh);
     });
     refresh();
   }
@@ -482,31 +395,18 @@
   function hideError() { $("#formError").hidden = true; }
 
   // ------------------------------------------------------------------ run a check
-  let timer = null;
-  function startTimer() {
-    const el = $("#workingTime");
-    const t0 = performance.now();
-    el.textContent = "0.0";
-    clearInterval(timer);
-    timer = setInterval(() => { el.textContent = ((performance.now() - t0) / 1000).toFixed(1); }, 100);
-  }
-  function stopTimer() { clearInterval(timer); timer = null; }
-
-  async function runCheck(request, label) {
+  async function runCheck(request) {
     hideError();
     const wrap = $("#reportWrap");
     const working = $("#working");
     const report = $("#report");
-    $("#workingName").textContent = label || "";
     wrap.hidden = false;
     working.hidden = false;
     report.hidden = true;
-    startTimer();
     scrollIntoViewSoft(wrap);
     try {
       const res = await request;
       const data = await res.json().catch(() => ({}));
-      stopTimer();
       if (!res.ok) {
         working.hidden = true;
         if (!state.result) wrap.hidden = true; else report.hidden = false;
@@ -514,27 +414,14 @@
         scrollIntoViewSoft($("#checker"));
         return;
       }
-      data._checkedAt = new Date().toISOString();
-      data._checkId = makeCheckId(data);
       state.result = data;
       working.hidden = true;
       renderReport(data, true);
     } catch (_) {
-      stopTimer();
       working.hidden = true;
       if (!state.result) wrap.hidden = true; else report.hidden = false;
       showError(t("err_network"));
     }
-  }
-
-  // A short, readable reference so a printed report can be quoted in a complaint.
-  function makeCheckId(r) {
-    const d = new Date();
-    const pad = (n) => String(n).padStart(2, "0");
-    const seed = JSON.stringify(r.evidence || []) + d.getTime();
-    let h = 0;
-    for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
-    return `SS-${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${h.toString(16).toUpperCase().slice(0, 4).padStart(4, "0")}`;
   }
 
   function scrollIntoViewSoft(el) {
@@ -555,12 +442,6 @@
     let checked = "";
     if (r.kind === "apk") {
       checked = `<strong>${esc(m.label)}</strong> <code>${esc(m.package)}</code>`;
-    } else if (r.kind === "sms") {
-      const msg = String(m.message || "");
-      checked = `<span>${esc(t("msg_from"))}: ${m.sender ? `<code>${esc(m.sender)}</code>` : esc(t("msg_unknown_sender"))}</span>
-        <blockquote class="msg-quote">${esc(msg.length > 280 ? msg.slice(0, 280) + "…" : msg)}</blockquote>`;
-    } else if (r.kind === "exe") {
-      checked = `<strong>${esc(m.file_name)}</strong> <code>${esc(t("win_program"))}</code>`;
     } else if (m.type === "upi") {
       checked = `${m.preview ? `<img src="${esc(m.preview)}" alt="">` : ""}
         <span>${esc(t("pays"))} <code>${esc(m.payee_upi)}</code></span>
@@ -610,16 +491,14 @@
     let t3Value, t3Note;
     if (ai.used) {
       t3Value = ai.model_verdict ? `<span class="v-${ai.model_verdict}">${esc(verdictWord(ai.model_verdict))}</span>` : esc(t("t3_off"));
-      t3Note = ai.cached ? t("t3_cached") : t("t3_ok", { s: (ai.latency_ms / 1000).toFixed(1) });
+      t3Note = t("t3_ok", { s: (ai.latency_ms / 1000).toFixed(1) });
       if (ai.dropped_reasons) t3Note += " " + t("t3_dropped", { d: ai.dropped_reasons });
-      if (ai.fixed_language) t3Note += " " + t("t3_lang", { n: ai.fixed_language });
     } else {
       t3Value = esc(t("t3_off"));
       t3Note = ai.status === "invalid_json" ? t("t3_invalid") : t("t3_unavailable");
     }
     let t4Note;
     if (!ai.used || !ai.model_verdict) t4Note = t("t4_rules");
-    else if (ai.capped_by_rules) t4Note = t("t4_capped", { mv: verdictWord(ai.model_verdict), final: verdictWord(r.verdict) });
     else if (ai.raised_by_rules) t4Note = t("t4_raised", { mv: verdictWord(ai.model_verdict), floor: verdictWord(r.rule_floor) });
     else if (ai.model_verdict !== r.rule_floor) t4Note = t("t4_model_higher");
     else t4Note = t("t4_agree");
@@ -644,18 +523,8 @@
         </details>
       </section>`;
 
-    const when = r._checkedAt ? new Date(r._checkedAt).toLocaleString(L === "kn" ? "kn-IN" : "en-IN",
-      { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }) : "";
     report.dataset.verdict = r.verdict;
     report.innerHTML = `
-      <div class="report-doc">
-        <p class="doc-title">${ICONS.report}<span>${esc(t("report_title"))}</span></p>
-        <dl class="doc-meta">
-          <div><dt>${esc(t("report_id"))}</dt><dd>${esc(r._checkId || "")}</dd></div>
-          <div><dt>${esc(t("report_time"))}</dt><dd>${esc(when)}</dd></div>
-          <div><dt>${esc(t("report_where"))}</dt><dd>${esc(t("report_device"))}</dd></div>
-        </dl>
-      </div>
       <div class="report-head">
         <div class="stamp" lang="${L}" role="img" aria-label="${esc(verdictWord(r.verdict))}">${esc(verdictWord(r.verdict))}</div>
         <div class="head-copy">
@@ -679,7 +548,7 @@
       ${trail}
       <div class="report-foot">
         <span>${esc((r.disclaimer && r.disclaimer[L]) || "")}</span>
-        <span class="foot-actions"><button type="button" class="btn-quiet print">${esc(t("print"))}</button><button type="button" class="btn-quiet again">${esc(t("again"))}</button></span>
+        <button type="button" class="again">${esc(t("again"))}</button>
       </div>`;
     report.hidden = false;
 
@@ -704,12 +573,6 @@
       }
       return;
     }
-    if (e.target.closest(".print")) {
-      const details = $("#evidence");
-      if (details) details.open = true;
-      window.print();
-      return;
-    }
     if (e.target.closest(".again")) {
       scrollIntoViewSoft($("#checker"));
       const tab = $(`.mode [data-mode="${state.mode}"]`);
@@ -720,7 +583,6 @@
   // ------------------------------------------------------------------ boot
   wireDrop($("#panel-apk"), "apk");
   wireDrop($("#panel-qr"), "qr");
-  wireSms($("#panel-sms"));
   applyLang();
   loadHealth();
   loadSamples();

@@ -73,25 +73,6 @@ def score(analysis: dict) -> dict:
         hits.append({"rule": "combo.fake_official_sms", "weight": weights["combo.fake_official_sms"],
                      "evidence_ids": ids_for({"impersonation"} | SMS_PERMS | {"perm.SEND_SMS"}),
                      "combo": True})
-    if "exe.keylogger_api" in present and present & EXFIL_KEYS:
-        hits.append({"rule": "combo.keylogger_exfil", "weight": weights["combo.keylogger_exfil"],
-                     "evidence_ids": ids_for({"exe.keylogger_api"} | EXFIL_KEYS), "combo": True})
-    sms_links = {"sms.short_link", "sms.lookalike_domain", "sms.apk_link", "string.raw_ip"}
-    sms_pressure = {"sms.urgency", "sms.kyc_update", "sms.authority_threat", "sms.power_cut", "sms.money_lure"}
-    if present & sms_links and present & sms_pressure:
-        hits.append({"rule": "combo.sms_phish", "weight": weights["combo.sms_phish"],
-                     "evidence_ids": ids_for(sms_links | sms_pressure), "combo": True})
-    if "sms.asks_secret" in present and present & {"sms.urgency", "sms.kyc_update", "sms.authority_threat"}:
-        hits.append({"rule": "combo.sms_secret_grab", "weight": weights["combo.sms_secret_grab"],
-                     "evidence_ids": ids_for({"sms.asks_secret", "sms.urgency", "sms.kyc_update",
-                                              "sms.authority_threat"}), "combo": True})
-    if "sms.job_scam" in present and present & {"sms.chat_link", "sms.money_lure", "sms.personal_sender"}:
-        hits.append({"rule": "combo.task_scam", "weight": weights["combo.task_scam"],
-                     "evidence_ids": ids_for({"sms.job_scam", "sms.chat_link", "sms.money_lure",
-                                              "sms.personal_sender"}), "combo": True})
-    if {"sms.authority_threat", "sms.urgency"} <= present:
-        hits.append({"rule": "combo.digital_arrest", "weight": weights["combo.digital_arrest"],
-                     "evidence_ids": ids_for({"sms.authority_threat", "sms.urgency"}), "combo": True})
     if {"qr.prefilled_amount", "qr.receive_wording"} <= present:
         hits.append({"rule": "combo.fake_receive", "weight": weights["combo.fake_receive"],
                      "evidence_ids": ids_for({"qr.prefilled_amount", "qr.receive_wording"}),

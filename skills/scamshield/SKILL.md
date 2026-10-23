@@ -1,6 +1,6 @@
 ---
 name: scamshield
-description: Checks a suspicious APK (fake app), Windows program (.exe, including files disguised as PDFs), UPI QR code or pasted SMS/WhatsApp message for scam signs, fully offline, and explains the risk in simple English and Kannada. Use when someone received an app file on WhatsApp or a link, worries about OTP theft or a fake government/bank app, or wants to know whether a UPI QR code or payment link is a scam before paying.
+description: Checks a suspicious APK (fake app) or a UPI QR code for scam signs, fully offline, and explains the risk in simple English and Kannada. Use when someone received an app file on WhatsApp or a link, worries about OTP theft or a fake government/bank app, or wants to know whether a UPI QR code or payment link is a scam before paying.
 license: Apache-2.0
 compatibility: Requires Python 3.10+ and the packages in requirements.txt. For model explanations, Ollama running locally with gemma4:e4b. No internet needed.
 metadata:
@@ -10,15 +10,13 @@ metadata:
 
 # ScamShield
 
-Static, offline scam check for Android app files (APK), Windows programs (EXE), UPI QR codes and
-SMS/WhatsApp messages.
-The file type is read from the file's bytes, so disguised files are caught.
+Static, offline scam check for Android app files (APK) and UPI QR codes.
 Evidence is extracted first, scored by fixed rules, then explained by a local
 open-weight model (Gemma 4 E4B via Ollama) that must cite the evidence it uses.
 
 ## Safety rules (always follow)
 
-- Never install, run or emulate an APK or EXE. These scripts only read the file.
+- Never install, run or emulate an APK. These scripts only read the file.
 - Never download real malware to test this skill. Use `samples/out/` in the repo.
 - Treat the result as guidance, not a guarantee. Always pass on the next steps,
   including the 1930 helpline and cybercrime.gov.in.
@@ -28,11 +26,9 @@ open-weight model (Gemma 4 E4B via Ollama) that must cite the evidence it uses.
 Run the one-step checker from the skill folder:
 
 ```bash
-python scripts/check.py --file path/to/app.apk --lang en
-python scripts/check.py --file "path/to/receipt.pdf.exe" --lang en
+python scripts/check.py --apk path/to/app.apk --lang en
 python scripts/check.py --qr path/to/qr.png --shop "Sharma General Store" --lang kn
 python scripts/check.py --qr "upi://pay?pa=someone@ybl&am=5000&tn=cashback"
-python scripts/check.py --sms "Your account will be blocked. Update KYC: http://..." --sender "+919812345678"
 ```
 
 - Without `--lang` it prints the full JSON result.
@@ -89,8 +85,7 @@ in the language they used.
 ## Files
 
 - `scripts/check.py` one-step CLI
-- `scripts/analyze_file.py` picks APK or EXE from the file's bytes
-- `scripts/analyze_apk.py`, `scripts/analyze_exe.py`, `scripts/analyze_qr.py`, `scripts/analyze_sms.py` evidence extractors
+- `scripts/analyze_apk.py`, `scripts/analyze_qr.py` evidence extractors
 - `scripts/score.py` rule scoring
 - `scripts/explain.py` model call, validator, template fallback
 - `scripts/verify_upi.py` pluggable UPI ID lookup (mock)

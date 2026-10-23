@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ScamShield</title>
-  <meta name="description" content="Check a suspicious app, program, UPI QR code or message offline, explained in English and Kannada.">
+  <meta name="description" content="Check a suspicious app file or UPI QR code offline, explained in English and Kannada.">
   <link rel="icon" href="/static/img/mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
@@ -20,49 +20,28 @@
 
   <a class="skip" href="#checker">Skip to the checker</a>
 
-  <!-- Helpline strip: always visible, like a public-safety portal -->
-  <div class="utility">
-    <div class="utility-inner">
-      <p class="utility-tag" data-i18n="util_tagline">Open-source, offline scam checker</p>
-      <p class="utility-help">
-        <span data-i18n="util_helpline">Cyber fraud helpline</span>
-        <a href="tel:1930" class="utility-num">1930</a>
-        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener">cybercrime.gov.in</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="ScamShield home">
+      <img src="/static/img/mark.svg" alt="" width="30" height="30">
+      <span>ScamShield</span>
+    </a>
+    <div class="topbar-tools">
+      <p class="model-pill" id="modelPill" data-state="checking">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="modelText" data-i18n="status_checking">Checking the local model</span>
       </p>
-    </div>
-  </div>
-
-  <div class="command">
-    <header class="masthead">
-      <a class="brand" href="/" aria-label="ScamShield home">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M16 2.5 4.5 6.8v8.4c0 7 4.8 12.2 11.5 14.3 6.7-2.1 11.5-7.3 11.5-14.3V6.8z" fill="currentColor"/>
-          <path d="M16 6.2 8 9.2v6c0 4.9 3.2 8.6 8 10.3 4.8-1.7 8-5.4 8-10.3v-6z" fill="none" stroke="var(--navy)" stroke-width="1.6"/>
-          <path d="m11.6 15.6 3.1 3.1 5.9-6.3" fill="none" stroke="#ff5a4e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>ScamShield</span>
-      </a>
-      <nav class="nav" aria-label="Sections">
-        <a href="#checker" data-i18n="nav_check">Check</a>
-        <a href="#how" data-i18n="nav_how">How it works</a>
-        <a href="#limits" data-i18n="nav_limits">Limits</a>
-      </nav>
-      <div class="masthead-tools">
-        <p class="model-pill" id="modelPill" data-state="checking">
-          <span class="dot" aria-hidden="true"></span>
-          <span id="modelText" data-i18n="status_checking">Checking the local model</span>
-        </p>
-        <div class="lang" role="group" aria-label="Language">
-          <button type="button" data-lang="en" aria-pressed="true">English</button>
-          <button type="button" data-lang="kn" aria-pressed="false" lang="kn">ಕನ್ನಡ</button>
-        </div>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">English</button>
+        <button type="button" data-lang="kn" aria-pressed="false" lang="kn">ಕನ್ನಡ</button>
       </div>
-    </header>
+    </div>
+  </header>
 
+  <main>
     <section class="hero" aria-labelledby="headline">
       <div class="hero-copy">
         <h1 id="headline" data-i18n="headline">Check before you trust.</h1>
-        <p class="lede" data-i18n="lede">Got an app, a program, a payment QR or a message you're not sure about? ScamShield checks it right here on this computer and tells you what it would really do.</p>
+        <p class="lede" data-i18n="lede">Got an app file or a payment QR you're not sure about? ScamShield checks it right here on this computer and tells you what it would really do.</p>
         <ul class="promises">
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 8.8a14 14 0 0 1 5-2.9M11.5 5.6a14 14 0 0 1 10 3.2M5.5 12.3a9 9 0 0 1 4.4-2.2M14.4 10.4a9 9 0 0 1 4.1 1.9M8.8 15.6a4.5 4.5 0 0 1 6.4 0"/><circle cx="12" cy="19" r="1"/><path d="M3 3l18 18"/></svg>
@@ -70,7 +49,7 @@
           </li>
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
-            <span data-i18n="promise_never_runs">Never installs or runs the file.</span>
+            <span data-i18n="promise_never_runs">Never installs or opens the app.</span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h9v7H8l-4 3z"/><path d="M13 9h7v8l-3-2h-4z"/></svg>
@@ -79,50 +58,37 @@
         </ul>
       </div>
 
-      <div class="console" id="checker">
-        <div class="console-head">
-          <h2 data-i18n="console_title">New check</h2>
-          <span class="console-badge"><span class="dot" aria-hidden="true"></span><span data-i18n="console_offline">Runs on this device</span></span>
-        </div>
-
+      <div class="checker" id="checker">
         <div class="mode" role="tablist" aria-label="What do you want to check?">
           <button type="button" role="tab" id="tab-apk" aria-controls="panel-apk" aria-selected="true" data-mode="apk">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg>
-            <span data-i18n="tab_apk">App or program</span>
+            <span data-i18n="tab_apk">App file (APK)</span>
           </button>
           <button type="button" role="tab" id="tab-qr" aria-controls="panel-qr" aria-selected="false" data-mode="qr" tabindex="-1">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 20h2M20 14v2"/></svg>
             <span data-i18n="tab_qr">Payment QR</span>
           </button>
-          <button type="button" role="tab" id="tab-sms" aria-controls="panel-sms" aria-selected="false" data-mode="sms" tabindex="-1">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h16a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H9l-4.5 3.5v-3.5H4A1.5 1.5 0 0 1 2.5 16V6A1.5 1.5 0 0 1 4 4.5z"/><path d="M7 9.5h10M7 13h6"/></svg>
-            <span data-i18n="tab_sms">Message</span>
-          </button>
         </div>
 
         <form id="panel-apk" role="tabpanel" aria-labelledby="tab-apk" class="panel" novalidate>
           <label class="drop" data-drop="apk">
-            <input type="file" name="file" class="sr-only">
-            <i class="corner tl" aria-hidden="true"></i><i class="corner tr" aria-hidden="true"></i>
-            <i class="corner bl" aria-hidden="true"></i><i class="corner br" aria-hidden="true"></i>
+            <input type="file" name="file" accept=".apk,application/vnd.android.package-archive" class="sr-only">
             <span class="drop-empty">
-              <strong data-i18n="drop_apk">Drop the app or program file here</strong>
+              <strong data-i18n="drop_apk">Drop the app file here</strong>
               <span><span data-i18n="drop_or">or</span> <u data-i18n="drop_choose">choose a file</u></span>
-              <small data-i18n="drop_apk_hint">Android .apk or Windows .exe, up to 100 MB</small>
+              <small data-i18n="drop_apk_hint">.apk files up to 100 MB</small>
             </span>
             <span class="drop-file" hidden>
               <span class="file-name"></span>
               <button type="button" class="clear" data-i18n="clear_file">Remove</button>
             </span>
           </label>
-          <button type="submit" class="primary" disabled data-i18n="check_apk">Check this file</button>
+          <button type="submit" class="primary" disabled data-i18n="check_apk">Check this app</button>
         </form>
 
         <form id="panel-qr" role="tabpanel" aria-labelledby="tab-qr" class="panel" hidden novalidate>
           <label class="drop" data-drop="qr">
             <input type="file" name="file" accept="image/png,image/jpeg,image/webp" class="sr-only">
-            <i class="corner tl" aria-hidden="true"></i><i class="corner tr" aria-hidden="true"></i>
-            <i class="corner bl" aria-hidden="true"></i><i class="corner br" aria-hidden="true"></i>
             <span class="drop-empty">
               <strong data-i18n="drop_qr">Drop a photo or screenshot of the QR</strong>
               <span><span data-i18n="drop_or">or</span> <u data-i18n="drop_choose">choose a file</u></span>
@@ -134,54 +100,30 @@
               <button type="button" class="clear" data-i18n="clear_file">Remove</button>
             </span>
           </label>
-          <div class="field-row">
-            <label class="field">
-              <span data-i18n="link_label">Or paste a UPI link</span>
-              <input type="text" name="link" inputmode="url" autocomplete="off" spellcheck="false" placeholder="upi://pay?pa=…">
-            </label>
-            <label class="field">
-              <span data-i18n="shop_label">Shop you think you're paying (optional)</span>
-              <input type="text" name="shop_name" autocomplete="off" maxlength="120">
-            </label>
-          </div>
+          <label class="field">
+            <span data-i18n="link_label">Or paste a UPI link</span>
+            <input type="text" name="link" inputmode="url" autocomplete="off" spellcheck="false" placeholder="upi://pay?pa=…">
+          </label>
+          <label class="field">
+            <span data-i18n="shop_label">Shop you think you're paying (optional)</span>
+            <input type="text" name="shop_name" autocomplete="off" maxlength="120">
+          </label>
           <button type="submit" class="primary" disabled data-i18n="check_qr">Check this QR</button>
-        </form>
-
-        <form id="panel-sms" role="tabpanel" aria-labelledby="tab-sms" class="panel" hidden novalidate>
-          <label class="field">
-            <span data-i18n="sms_label">Paste the SMS or WhatsApp message</span>
-            <textarea name="text" rows="5" maxlength="4000" spellcheck="false" data-i18n-placeholder="sms_placeholder" placeholder="Dear customer, your account will be blocked today…"></textarea>
-          </label>
-          <label class="field">
-            <span data-i18n="sender_label">Sender (optional)</span>
-            <input type="text" name="sender" autocomplete="off" maxlength="60" data-i18n-placeholder="sender_placeholder" placeholder="e.g. AX-HDFCBK or +91 98…">
-          </label>
-          <p class="panel-hint" data-i18n="sms_hint">Links in the message are never opened.</p>
-          <button type="submit" class="primary" disabled data-i18n="check_sms">Check this message</button>
         </form>
 
         <p class="form-error" id="formError" role="alert" hidden></p>
 
-        <details class="samples" open>
-          <summary data-i18n="samples_title">No file handy? Try a demo sample.</summary>
+        <div class="samples">
+          <h2 data-i18n="samples_title">No file handy? Try a demo sample.</h2>
           <ul id="sampleList" class="sample-list"></ul>
-        </details>
+        </div>
       </div>
     </section>
-  </div>
 
-  <main>
     <section class="report-wrap" id="reportWrap" aria-live="polite" hidden>
       <div class="working" id="working" hidden>
-        <div class="scanner" aria-hidden="true">
-          <svg viewBox="0 0 48 56"><path d="M8 2h22l12 12v38a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M30 2v12h12"/><path d="M14 26h20M14 33h20M14 40h14"/></svg>
-          <span class="scanline"></span>
-        </div>
-        <div class="working-copy">
-          <p class="working-title"><span data-i18n="working_title">Inspecting</span> <strong id="workingName"></strong></p>
-          <p class="working-sub" data-i18n="working">Reading the file, scoring it, and asking Gemma to explain…</p>
-        </div>
-        <p class="working-time" aria-hidden="true"><span id="workingTime">0.0</span> s</p>
+        <span class="spinner" aria-hidden="true"></span>
+        <p data-i18n="working">Reading the file, scoring it, and asking Gemma to explain…</p>
       </div>
       <article class="report" id="report" hidden tabindex="-1"></article>
     </section>
@@ -193,7 +135,7 @@
         <a href="https://ianslive.in/indians-lose-over-rs-52976-crore-to-cyber-frauds-over-six-years-report--20260103154943" target="_blank" rel="noopener" data-i18n="why_source">Source: I4C data, via IANS</a></p>
     </section>
 
-    <section class="how" id="how" aria-labelledby="how-title">
+    <section class="how" aria-labelledby="how-title">
       <h2 id="how-title" data-i18n="how_title">How a check works</h2>
       <ol class="how-steps">
         <li>
@@ -211,7 +153,7 @@
       </ol>
     </section>
 
-    <section class="limits" id="limits" aria-labelledby="limits-title">
+    <section class="limits" aria-labelledby="limits-title">
       <h2 id="limits-title" data-i18n="limits_title">What ScamShield can't do yet</h2>
       <ul>
         <li data-i18n="limit1">Apps that hide their code with advanced packing can slip past a static check. ScamShield flags known packers, but it is a first line of defence, not an antivirus.</li>
@@ -222,12 +164,9 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-inner">
-      <p><span data-i18n="footer_license">Open source under the Apache-2.0 license.</span> <span data-i18n="footer_model">Explanations by Gemma 4 E4B through Ollama, running locally.</span></p>
-      <p><span data-i18n="footer_help">Lost money to fraud? Call</span> <a href="tel:1930">1930</a> <span data-i18n="footer_or">or report at</span> <a href="https://cybercrime.gov.in" target="_blank" rel="noopener">cybercrime.gov.in</a>.
-        <a id="repoLink" hidden target="_blank" rel="noopener" data-i18n="footer_repo">Source code on GitHub</a></p>
-      <p class="footer-note" data-i18n="footer_independent">ScamShield is an independent open-source project, not a government service.</p>
-    </div>
+    <p><span data-i18n="footer_license">Open source under the Apache-2.0 license.</span> <span data-i18n="footer_model">Explanations by Gemma 4 E4B through Ollama, running locally.</span></p>
+    <p><span data-i18n="footer_help">Lost money to fraud? Call</span> <a href="tel:1930">1930</a> <span data-i18n="footer_or">or report at</span> <a href="https://cybercrime.gov.in" target="_blank" rel="noopener">cybercrime.gov.in</a>.
+      <a id="repoLink" hidden target="_blank" rel="noopener" data-i18n="footer_repo">Source code on GitHub</a></p>
   </footer>
 
   <script src="/static/app.js" defer></script>

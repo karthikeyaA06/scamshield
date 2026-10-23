@@ -29,62 +29,8 @@ NAME_MATCH_MIN = 70       # rapidfuzz score below this = shop name mismatch
 REGISTRY_MATCH_MIN = 70   # registered name vs QR name
 
 
-def _pick(texts: list[str]) -> str | None:
-    """If an image has several codes, prefer the payment one."""
-    texts = [t for t in texts if t]
-    for t in texts:
-        if t.lower().startswith("upi:") or t.startswith("000201"):
-            return t
-    return texts[0] if texts else None
-
-
-def _decode_zxing(img) -> str | None:
-    """zxing-cpp copes with real phone photos: angles, glare, blur, logos, dense codes."""
-    try:
-        import zxingcpp
-    except ImportError:
-        return None
-    try:
-        results = zxingcpp.read_barcodes(img, formats=zxingcpp.BarcodeFormat.QRCode)
-    except Exception:
-        return None
-    return _pick([r.text for r in results])
-
-
-def _decode_opencv(img) -> str | None:
-    """Fallback: OpenCV detectors over a few resized and contrast-boosted versions."""
-    import cv2
-
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    variants = []
-    h, w = gray.shape[:2]
-    for side in (None, 1600, 1000):
-        if side is None:
-            variants.append(gray)
-        elif max(h, w) > side:
-            f = side / max(h, w)
-            variants.append(cv2.resize(gray, (int(w * f), int(h * f)), interpolation=cv2.INTER_AREA))
-    if max(h, w) < 600:
-        variants.append(cv2.resize(gray, (w * 2, h * 2), interpolation=cv2.INTER_NEAREST))
-    boosted = [cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8)).apply(v) for v in variants]
-    otsu = [cv2.threshold(v, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1] for v in variants]
-
-    detectors = [cv2.QRCodeDetector()]
-    if hasattr(cv2, "QRCodeDetectorAruco"):
-        detectors.insert(0, cv2.QRCodeDetectorAruco())
-    for candidate in variants + boosted + otsu:
-        for det in detectors:
-            try:
-                text, _, _ = det.detectAndDecode(candidate)
-            except Exception:
-                continue
-            if text:
-                return text
-    return None
-
-
 def decode_qr_image(data: bytes) -> str:
-    """Decode the QR code in an image. Raises InputError if none is found."""
+    """Decode the first QR code in an image. Raises InputError if none is found."""
     if len(data) > MAX_IMAGE_BYTES:
         raise InputError("The image is larger than 10 MB.")
     import cv2
@@ -92,44 +38,17 @@ def decode_qr_image(data: bytes) -> str:
 
     img = cv2.imdecode(np.frombuffer(data, np.uint8), cv2.IMREAD_COLOR)
     if img is None:
-        raise InputError("This file is not an image ScamShield can read. Use a PNG or JPG "
-                         "(on iPhone, take a screenshot of the photo).")
-    text = _decode_zxing(img) or _decode_opencv(img)
-    if text:
-        return text
-    raise InputError("No QR code was found in this image. Hold the phone straight, fill most "
-                     "of the frame with the QR, and avoid glare. Or paste the UPI link instead.")
-
-
-def parse_emv(payload: str) -> dict:
-    """Parse an EMVCo / Bharat QR string (starts with "000201") into its main fields.
-
-    Returns {"upi", "name", "amount", "city"} with any UPI ID found inside the
-    merchant account templates (tags 26-51)."""
-    def tlv(s: str) -> dict:
-        out, i = {}, 0
-        while i + 4 <= len(s):
-            tag, length = s[i:i + 2], s[i + 2:i + 4]
-            if not length.isdigit():
-                break
-            n = int(length)
-            out[tag] = s[i + 4:i + 4 + n]
-            i += 4 + n
-        return out
-
-    top = tlv(payload)
-    upi = None
-    for tag in range(26, 52):
-        value = top.get(f"{tag:02d}")
-        if not value:
-            continue
-        for sub in tlv(value).values():
-            if "@" in sub and " " not in sub and len(sub) < 100:
-                upi = sub
-                break
-        if upi:
-            break
-    return {"upi": upi, "name": top.get("59", ""), "amount": top.get("54", ""), "city": top.get("60", "")}
+        raise InputError("This file is not an image ScamShield can read (use PNG or JPG).")
+    detector = cv2.QRCodeDetector()
+    candidates = [img, cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)]
+    h, w = img.shape[:2]
+    if max(h, w) < 600:
+        candidates.append(cv2.resize(img, (w * 2, h * 2), interpolation=cv2.INTER_NEAREST))
+    for candidate in candidates:
+        text, _, _ = detector.detectAndDecode(candidate)
+        if text:
+            return text
+    raise InputError("No QR code was found in this image. Try a sharper, closer photo.")
 
 
 def _matches(text: str, words: list[str]) -> list[str]:
@@ -163,20 +82,6 @@ def analyze_qr(payload: str, shop_name: str | None = None) -> dict:
     ev = EvidenceBuilder()
     shop_name = (shop_name or "").strip() or None
     meta: dict = {"raw": payload[:500], "shop_name": shop_name}
-
-    if payload.startswith("000201"):  # Bharat QR / EMVCo merchant QR
-        emv = parse_emv(payload)
-        meta["format"] = "Bharat QR"
-        if not emv["upi"]:
-            meta["type"] = "text"
-            ev.add("qr", "info.bharat_qr", emv["name"] or "Bharat QR",
-                   label="Bharat QR for card payments, with no UPI ID inside")
-            return {"kind": "qr", "meta": meta, "evidence": ev.items}
-        query = {"pa": emv["upi"], "pn": emv["name"]}
-        if emv["amount"]:
-            query["am"] = emv["amount"]
-        from urllib.parse import urlencode
-        payload = "upi://pay?" + urlencode(query)
 
     parsed = urlparse(payload)
     scheme = parsed.scheme.lower()
@@ -228,20 +133,14 @@ def analyze_qr(payload: str, shop_name: str | None = None) -> dict:
                label="Promises you will receive money",
                params={"words": tn or pn})
 
-    # Many genuine small shops and individuals in India use mobile-number UPI IDs, so this
-    # only counts as risk when the QR also promises money (the "refund"/"cashback" trick).
-    if PERSONAL_HANDLE_RE.match(pa) and receive_hits:
+    if PERSONAL_HANDLE_RE.match(pa) and (shop_name or receive_hits):
         ev.add("qr", "qr.personal_handle", pa, severity_for(rules["qr.personal_handle"]),
-               label="Personal mobile-number UPI ID promising you money", params={"upi": pa})
+               label="Personal mobile-number UPI ID, not a shop", params={"upi": pa})
 
-    if shop_name and pn:
-        if _similarity(shop_name, pn) < NAME_MATCH_MIN:
-            ev.add("qr", "qr.name_mismatch", f'QR says "{pn}", shop is "{shop_name}"',
-                   severity_for(rules["qr.name_mismatch"]),
-                   label="Name in QR does not match the shop", params={"pn": pn, "shop": shop_name})
-        else:
-            ev.add("qr", "info.name_match", f'QR says "{pn}", you expect "{shop_name}"',
-                   label="Name in QR matches who you expect to pay (a good sign)")
+    if shop_name and pn and _similarity(shop_name, pn) < NAME_MATCH_MIN:
+        ev.add("qr", "qr.name_mismatch", f'QR says "{pn}", shop is "{shop_name}"',
+               severity_for(rules["qr.name_mismatch"]),
+               label="Name in QR does not match the shop", params={"pn": pn, "shop": shop_name})
 
     record = verify_upi_id(pa)
     meta["registry"] = {"is_mock": IS_MOCK, "found": bool(record)}

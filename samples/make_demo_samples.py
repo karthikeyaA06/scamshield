@@ -265,130 +265,6 @@ def build_safe_apk(path: Path) -> None:
                      ("ScamShield Demo Labs", "ScamShield", "IN"))
 
 
-def build_fake_kyc_apk(path: Path) -> None:
-    """Fake bank 'KYC update' app: SMS theft plus a fake login screen over other apps,
-    reporting to a bare IP address (a reserved documentation address, unreachable)."""
-    manifest = build_manifest("com.sbi.kycupdate.online", "SBI KYC Update", "4.2", [
-        "android.permission.INTERNET",
-        "android.permission.READ_SMS",
-        "android.permission.RECEIVE_SMS",
-        "android.permission.SEND_SMS",
-        "android.permission.READ_CONTACTS",
-        "android.permission.SYSTEM_ALERT_WINDOW",
-    ], accessibility_service=False)
-    dex = build_dex([
-        DEMO_MARKER,
-        "Lcom/sbi/kycupdate/online/MainActivity;",
-        "Lcom/sbi/kycupdate/online/OverlayLogin;",
-        "http://203.0.113.45:8080/api/upload",
-        "Your SBI account will be blocked today. Update PAN and KYC now.",
-        "Enter net banking user ID and password",
-        "Enter debit card number, expiry and CVV",
-        "Enter the OTP sent to your registered mobile",
-    ])
-    write_signed_apk(path, {"AndroidManifest.xml": manifest, "classes.dex": dex},
-                     ("Android Debug", "Android", "US"))
-
-
-def build_fake_pmkisan_apk(path: Path) -> None:
-    """Fake government-scheme app that hides its code with a packer and installs more apps."""
-    manifest = build_manifest("com.pmkisan.status.check", "PM Kisan Yojana 2026", "1.0", [
-        "android.permission.INTERNET",
-        "android.permission.READ_SMS",
-        "android.permission.RECEIVE_SMS",
-        "android.permission.REQUEST_INSTALL_PACKAGES",
-        "android.permission.QUERY_ALL_PACKAGES",
-    ], accessibility_service=False)
-    dex = build_dex([
-        DEMO_MARKER,
-        "Lcom/stub/StubApp;",
-        "Check your PM Kisan installment status",
-        "Install update to receive Rs 6000",
-    ])
-    files = {
-        "AndroidManifest.xml": manifest,
-        "classes.dex": dex,
-        # Empty placeholder named like a real packer library: the name is the signal.
-        "lib/arm64-v8a/libjiagu.so": b"",
-        "assets/payload.bin": b"\x00" * 64,
-    }
-    write_signed_apk(path, files, ("Android Debug", "Android", "US"))
-
-
-def build_loan_apk(path: Path) -> None:
-    """Instant-loan app that grabs contacts, call history and SMS: suspicious, not proven theft."""
-    manifest = build_manifest("com.quickcash.instantloan", "QuickCash Instant Loan", "3.1", [
-        "android.permission.INTERNET",
-        "android.permission.CAMERA",
-        "android.permission.READ_CONTACTS",
-        "android.permission.READ_CALL_LOG",
-        "android.permission.READ_SMS",
-    ], accessibility_service=False)
-    dex = build_dex([
-        DEMO_MARKER,
-        "Lcom/quickcash/instantloan/MainActivity;",
-        "https://quickcash-demo-0000.firebaseio.com/users",
-        "Get Rs 50,000 loan in 5 minutes. No documents.",
-        "Allow access to contacts to continue",
-    ])
-    write_signed_apk(path, {"AndroidManifest.xml": manifest, "classes.dex": dex},
-                     ("QuickCash Fintech", "QuickCash", "IN"))
-
-
-def build_pe(sections: list[str], strings: list[str], signed: bool) -> bytes:
-    """A Windows PE file with headers, named sections and a string table, but NO code.
-
-    AddressOfEntryPoint and SizeOfImage are 0, so Windows refuses to start it
-    ("not a valid application"). ScamShield only reads these bytes.
-    """
-    e_lfanew = 0x80
-    dos = bytearray(e_lfanew)
-    dos[0:2] = b"MZ"
-    struct.pack_into("<I", dos, 0x3C, e_lfanew)
-    opt_size = 0xE0
-    n = len(sections)
-    header_end = e_lfanew + 24 + opt_size + 40 * n
-    data_off = (header_end + 0x1FF) & ~0x1FF
-    blob = ("\0".join([DEMO_MARKER] + strings) + "\0").encode("ascii")
-    blob += b"\0" * (-len(blob) % 0x200)
-    sig = b"\0" * 64 if signed else b""
-
-    coff = b"PE\0\0" + struct.pack("<HHIIIHH", 0x14C, n, 0, 0, 0, opt_size, 0x0102)
-    opt = bytearray(opt_size)
-    struct.pack_into("<H", opt, 0, 0x10B)        # PE32
-    struct.pack_into("<I", opt, 92, 16)          # NumberOfRvaAndSizes
-    if signed:                                   # security directory -> signature block
-        struct.pack_into("<II", opt, 96 + 4 * 8, data_off + len(blob), len(sig))
-    table = b""
-    for i, name in enumerate(sections):
-        raw = blob if i == 0 else b""
-        table += struct.pack("<8sIIIIIIHHI", name.encode()[:8], len(raw), 0x1000 * (i + 1),
-                             len(raw), data_off if raw else 0, 0, 0, 0, 0, 0x40000040)
-    head = bytes(dos) + coff + bytes(opt) + table
-    head += b"\0" * (data_off - len(head))
-    return head + blob + sig
-
-
-def build_exes() -> None:
-    # 1. A "PDF receipt" that is really a program with keylogger functions and a Telegram bot.
-    (OUT / "Traffic_Challan_Receipt.pdf.exe").write_bytes(build_pe(
-        [".text", ".rdata"],
-        ["GetAsyncKeyState", "SetWindowsHookExA", "user32.dll",
-         "https://api.telegram.org/botDEMO_NOT_REAL/sendDocument",
-         "Your e-challan receipt", "Enter net banking password"],
-        signed=False))
-    # 2. A packed program renamed to .apk, so it looks like a phone app.
-    (OUT / "PM_Kisan_Update.apk").write_bytes(build_pe(
-        ["UPX0", "UPX1", ".rsrc"],
-        ["PM Kisan beneficiary status", "kernel32.dll"],
-        signed=False))
-    # 3. An ordinary signed installer, for contrast.
-    (OUT / "PhotoViewer_Setup.exe").write_bytes(build_pe(
-        [".text", ".rdata", ".rsrc"],
-        ["Photo Viewer setup", "kernel32.dll", "Choose install folder"],
-        signed=True))
-
-
 QR_SAMPLES = [
     {
         "id": "qr_shop",
@@ -427,43 +303,6 @@ QR_SAMPLES = [
 ]
 
 
-# Demo messages. Links use reserved or non-working addresses and are never opened.
-SMS_SAMPLES = [
-    {"id": "sms_power", "kind": "sms", "expected": "Dangerous",
-     "title": "Electricity disconnection SMS", "description": "Says your power will be cut tonight.",
-     "title_kn": "ವಿದ್ಯುತ್ ಕಡಿತದ SMS", "description_kn": "ಇಂದು ರಾತ್ರಿ ವಿದ್ಯುತ್ ಕಡಿತವಾಗುತ್ತದೆ ಎನ್ನುತ್ತದೆ.",
-     "sender": "+91 98123 45678",
-     "text": ("Dear Consumer, your electricity power will be disconnected tonight at 9.30 pm because "
-              "your previous month bill was not updated. Please immediately contact our electricity "
-              "officer 9876543210. Thank you.")},
-    {"id": "sms_kyc", "kind": "sms", "expected": "Dangerous",
-     "title": "SBI KYC update SMS", "description": "Account blocked unless you click a link.",
-     "title_kn": "SBI KYC ಅಪ್‌ಡೇಟ್ SMS", "description_kn": "ಲಿಂಕ್ ಕ್ಲಿಕ್ ಮಾಡದಿದ್ದರೆ ಖಾತೆ ಬ್ಲಾಕ್ ಎನ್ನುತ್ತದೆ.",
-     "sender": "+91 70123 45678",
-     "text": ("Dear SBI user, your YONO account will be blocked today. Update your PAN/KYC "
-              "immediately: http://sbi-kyc-update.example/login")},
-    {"id": "sms_job", "kind": "sms", "expected": "Dangerous",
-     "title": "Part-time job WhatsApp", "description": "Earn daily by liking YouTube videos.",
-     "title_kn": "ಪಾರ್ಟ್-ಟೈಮ್ ಉದ್ಯೋಗ WhatsApp", "description_kn": "ವಿಡಿಯೋ ಲೈಕ್ ಮಾಡಿ ದಿನವೂ ಗಳಿಸಿ ಎನ್ನುತ್ತದೆ.",
-     "sender": "+91 98450 12345",
-     "text": ("Hello! We are hiring for part-time work from home. Earn Rs 3,000 to Rs 8,000 daily by "
-              "liking YouTube videos. Contact HR on Telegram: https://t.me/demo_hr_desk")},
-    {"id": "sms_arrest", "kind": "sms", "expected": "Dangerous",
-     "title": "\u201cCyber Crime Branch\u201d message", "description": "A drugs parcel and an arrest threat.",
-     "title_kn": "\u201cಸೈಬರ್ ಕ್ರೈಮ್ ಬ್ರಾಂಚ್\u201d ಸಂದೇಶ", "description_kn": "ಡ್ರಗ್ಸ್ ಪಾರ್ಸೆಲ್ ಮತ್ತು ಬಂಧನದ ಬೆದರಿಕೆ.",
-     "sender": "",
-     "text": ("This is Mumbai Cyber Crime Branch. A parcel in your name containing drugs has been seized "
-              "by customs. Your Aadhaar is linked to money laundering. Join the video call immediately "
-              "or an arrest warrant will be issued.")},
-    {"id": "sms_otp", "kind": "sms", "expected": "Safe",
-     "title": "Genuine bank OTP", "description": "A real-style OTP message, for comparison.",
-     "title_kn": "ನಿಜವಾದ ಬ್ಯಾಂಕ್ OTP", "description_kn": "ಹೋಲಿಕೆಗಾಗಿ ನಿಜವಾದ ಮಾದರಿಯ OTP ಸಂದೇಶ.",
-     "sender": "AX-HDFCBK",
-     "text": ("482913 is your OTP for a transaction of Rs 1,250.00 at AMAZON on your HDFC Bank card "
-              "ending 4417. Valid for 10 minutes. Do not share this OTP with anyone. -HDFC Bank")},
-]
-
-
 def build_qrs() -> None:
     import qrcode
 
@@ -478,10 +317,6 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     build_fake_apk(OUT / "fake_rto_challan.apk")
     build_safe_apk(OUT / "simple_calculator.apk")
-    build_fake_kyc_apk(OUT / "fake_sbi_kyc_update.apk")
-    build_fake_pmkisan_apk(OUT / "fake_pm_kisan.apk")
-    build_loan_apk(OUT / "quickcash_loan.apk")
-    build_exes()
     build_qrs()
     samples = [
         {"id": "apk_fake", "kind": "apk", "file": "fake_rto_challan.apk",
@@ -496,43 +331,7 @@ def main() -> None:
          "title_kn": "ಸರಳ ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಆಪ್",
          "description_kn": "ಹೋಲಿಕೆಗಾಗಿ ಒಂದು ಸಾಮಾನ್ಯ ಆಪ್.",
          "expected": "Safe"},
-        {"id": "apk_kyc", "kind": "apk", "file": "fake_sbi_kyc_update.apk",
-         "title": "“SBI KYC Update” app",
-         "description": "SMS says your bank account will be blocked unless you install this.",
-         "title_kn": "“SBI KYC ಅಪ್‌ಡೇಟ್” ಆಪ್",
-         "description_kn": "ಇದನ್ನು ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡದಿದ್ದರೆ ಬ್ಯಾಂಕ್ ಖಾತೆ ಬ್ಲಾಕ್ ಆಗುತ್ತದೆ ಎಂದು SMS ಹೇಳುತ್ತದೆ.",
-         "expected": "Dangerous"},
-        {"id": "apk_pmkisan", "kind": "apk", "file": "fake_pm_kisan.apk",
-         "title": "“PM Kisan Yojana 2026” app",
-         "description": "Shared in a farmers' group to “check your installment”.",
-         "title_kn": "“PM ಕಿಸಾನ್ ಯೋಜನೆ 2026” ಆಪ್",
-         "description_kn": "“ನಿಮ್ಮ ಕಂತು ಪರಿಶೀಲಿಸಿ” ಎಂದು ರೈತರ ಗುಂಪಿನಲ್ಲಿ ಹಂಚಲಾಗಿದೆ.",
-         "expected": "Dangerous"},
-        {"id": "apk_loan", "kind": "apk", "file": "quickcash_loan.apk",
-         "title": "“QuickCash Instant Loan” app",
-         "description": "Promises a loan in 5 minutes with no documents.",
-         "title_kn": "“QuickCash ತ್ವರಿತ ಸಾಲ” ಆಪ್",
-         "description_kn": "ದಾಖಲೆಗಳಿಲ್ಲದೆ 5 ನಿಮಿಷದಲ್ಲಿ ಸಾಲದ ಭರವಸೆ ನೀಡುತ್ತದೆ.",
-         "expected": "Suspicious"},
-        {"id": "exe_receipt", "kind": "exe", "file": "Traffic_Challan_Receipt.pdf.exe",
-         "title": "\u201cTraffic_Challan_Receipt.pdf\u201d",
-         "description": "An email attachment that looks like a PDF receipt.",
-         "title_kn": "\u201cಟ್ರಾಫಿಕ್ ಚಲನ್ ರಸೀದಿ.pdf\u201d",
-         "description_kn": "PDF ರಸೀದಿಯಂತೆ ಕಾಣುವ ಇಮೇಲ್ ಲಗತ್ತು.",
-         "expected": "Dangerous"},
-        {"id": "exe_renamed", "kind": "exe", "file": "PM_Kisan_Update.apk",
-         "title": "\u201cPM_Kisan_Update.apk\u201d (really a Windows program)",
-         "description": "Named like a phone app, but it is a program in disguise.",
-         "title_kn": "\u201cPM_Kisan_Update.apk\u201d (ನಿಜವಾಗಿ ವಿಂಡೋಸ್ ಪ್ರೋಗ್ರಾಂ)",
-         "description_kn": "ಫೋನ್ ಆಪ್‌ನಂತೆ ಹೆಸರಿದೆ, ಆದರೆ ಇದು ವೇಷ ಧರಿಸಿದ ಪ್ರೋಗ್ರಾಂ.",
-         "expected": "Dangerous"},
-        {"id": "exe_safe", "kind": "exe", "file": "PhotoViewer_Setup.exe",
-         "title": "PhotoViewer_Setup.exe",
-         "description": "An ordinary signed installer, for comparison.",
-         "title_kn": "PhotoViewer_Setup.exe",
-         "description_kn": "ಹೋಲಿಕೆಗಾಗಿ ಸಹಿ ಇರುವ ಸಾಮಾನ್ಯ ಇನ್‌ಸ್ಟಾಲರ್.",
-         "expected": "Safe"},
-    ] + [{"kind": "qr", **{k: v for k, v in s.items() if k != "payload"}} for s in QR_SAMPLES] + SMS_SAMPLES
+    ] + [{"kind": "qr", **{k: v for k, v in s.items() if k != "payload"}} for s in QR_SAMPLES]
     (OUT / "samples.json").write_text(json.dumps({"harmless_demo_samples": True, "samples": samples},
                                                  indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Wrote {len(samples)} harmless demo samples to {OUT}")

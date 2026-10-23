@@ -14,8 +14,6 @@ import json
 import os
 import sys
 import tempfile
-import threading
-from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
@@ -25,29 +23,18 @@ from fastapi.staticfiles import StaticFiles
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "skills" / "scamshield"))
 
-from scripts.analyze_file import analyze_file  # noqa: E402
+from scripts.analyze_apk import analyze_apk  # noqa: E402
 from scripts.analyze_qr import analyze_qr, analyze_qr_image  # noqa: E402
-from scripts.analyze_sms import analyze_sms  # noqa: E402
 from scripts.common import InputError, MAX_APK_BYTES, MAX_IMAGE_BYTES  # noqa: E402
-from scripts.explain import explain, model_status, warm_up  # noqa: E402
+from scripts.explain import explain, model_status  # noqa: E402
 
 STATIC = Path(__file__).resolve().parent / "static"
 SAMPLES_DIR = ROOT / "samples" / "out"
 USE_MODEL = os.environ.get("SCAMSHIELD_NO_MODEL", "").lower() not in ("1", "true", "yes")
 REPO_URL = os.environ.get("SCAMSHIELD_REPO_URL", "")
-VERSION = "1.2.0"
+VERSION = "1.0.0"
 
-
-@asynccontextmanager
-async def lifespan(_: FastAPI):
-    # Load Gemma into memory in the background so the first scan is fast.
-    if USE_MODEL and os.environ.get("SCAMSHIELD_NO_WARMUP", "") != "1":
-        threading.Thread(target=warm_up, daemon=True).start()
-    yield
-
-
-app = FastAPI(title="ScamShield", version=VERSION, docs_url="/api/docs", redoc_url=None,
-              lifespan=lifespan)
+app = FastAPI(title="ScamShield", version=VERSION, docs_url="/api/docs", redoc_url=None)
 
 
 @app.exception_handler(InputError)
@@ -89,23 +76,16 @@ def samples() -> dict:
 @app.get("/api/samples/{sample_id}/file")
 def sample_file(sample_id: str):
     s = _sample(sample_id)
-    if "file" not in s:
-        raise HTTPException(status_code=404, detail="This sample has no file")
-    media = {"apk": "application/vnd.android.package-archive",
-             "exe": "application/octet-stream"}.get(s["kind"], "image/png")
+    media = "application/vnd.android.package-archive" if s["kind"] == "apk" else "image/png"
     return FileResponse(SAMPLES_DIR / s["file"], media_type=media, filename=s["file"])
 
 
 @app.post("/api/samples/{sample_id}/check")
 def check_sample(sample_id: str) -> dict:
     s = _sample(sample_id)
-    if s["kind"] == "sms":
-        result = _run(analyze_sms(s["text"], s.get("sender")))
-        result["sample_id"] = sample_id
-        return result
     path = SAMPLES_DIR / s["file"]
-    if s["kind"] in ("apk", "exe"):
-        analysis = analyze_file(path, s["file"])
+    if s["kind"] == "apk":
+        analysis = analyze_apk(path)
     else:
         analysis = analyze_qr_image(path.read_bytes(), s.get("shop_name") or None)
         analysis["meta"]["preview"] = f"/api/samples/{sample_id}/file"
@@ -115,12 +95,10 @@ def check_sample(sample_id: str) -> dict:
 
 
 @app.post("/api/check/apk")
-@app.post("/api/check/file")
-def check_file(file: UploadFile = File(...)) -> dict:
-    """Android app or Windows program. The type is read from the file's bytes, not its name."""
-    name = os.path.basename(file.filename or "upload")
+def check_apk(file: UploadFile = File(...)) -> dict:
+    name = os.path.basename(file.filename or "upload.apk")
     with tempfile.TemporaryDirectory(prefix="scamshield-") as tmp:
-        dest = Path(tmp) / "upload.bin"
+        dest = Path(tmp) / "upload.apk"
         written = 0
         with open(dest, "wb") as out:
             while chunk := file.file.read(1024 * 1024):
@@ -128,14 +106,9 @@ def check_file(file: UploadFile = File(...)) -> dict:
                 if written > MAX_APK_BYTES:
                     raise InputError("The file is larger than 100 MB, so ScamShield will not open it.")
                 out.write(chunk)
-        analysis = analyze_file(dest, name)
+        analysis = analyze_apk(dest)
+    analysis["meta"]["file_name"] = name
     return _run(analysis)
-
-
-@app.post("/api/check/sms")
-def check_sms(text: str = Form(""), sender: str = Form("")) -> dict:
-    """A pasted SMS or WhatsApp message. Links inside it are never opened."""
-    return _run(analyze_sms(text, sender))
 
 
 @app.post("/api/check/qr")

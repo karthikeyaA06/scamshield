@@ -8,8 +8,5 @@ Bundled third-party material:
   Project Authors (https://github.com/EkType/Anek), SIL Open Font License 1.1
   (app/static/fonts/OFL-Anek.txt). Packaged by Fontsource.
 
-The Gemma 4 model (Apache-2.0) and Ollama (MIT) are NOT included in this repository.
-They are installed separately by the user.
-
-A full list of third-party components, the Track 1 resources used, and the license of
-every Python dependency is in THIRD_PARTY_LICENSES.md.
+The Gemma model is NOT included in this repository. It is downloaded separately
+through Ollama and is governed by its own terms (see README.md).

@@ -56,22 +56,3 @@ def test_bad_inputs_return_readable_errors(client):
     res = client.post("/api/check/qr", files={"file": ("x.png", b"not an image", "image/png")})
     assert res.status_code == 422
     assert client.post("/api/samples/nope/check").status_code == 404
-
-
-def test_upload_program_disguised_as_pdf(client, demo_samples):
-    data = (demo_samples / "PhotoViewer_Setup.exe").read_bytes()
-    res = client.post("/api/check/apk", files={"file": ("Bank_Statement.pdf", data, "application/pdf")})
-    body = res.json()
-    assert res.status_code == 200 and body["kind"] == "exe" and body["verdict"] == "Dangerous"
-    assert body["meta"]["file_name"] == "Bank_Statement.pdf"
-
-
-def test_check_message(client):
-    res = client.post("/api/check/sms", data={
-        "text": "Dear SBI user, your account will be blocked today. Update KYC immediately: http://sbi-kyc.example/login",
-        "sender": "+917012345678"})
-    body = res.json()
-    assert res.status_code == 200 and body["kind"] == "sms" and body["verdict"] == "Dangerous"
-    assert client.post("/api/check/sms", data={"text": ""}).status_code == 422
-    assert client.post("/api/samples/sms_otp/check").json()["verdict"] == "Safe"
-    assert client.get("/api/samples/sms_otp/file").status_code == 404
